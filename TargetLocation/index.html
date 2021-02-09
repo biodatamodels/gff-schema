@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Type: Target - GFF Schema (DRAFT, pre-alpha)</title>
+  <title>Type: target location - GFF Schema (DRAFT, pre-alpha)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Type: Target";
-    var mkdocs_page_input_path = "Target.md";
+    var mkdocs_page_name = "Type: target location";
+    var mkdocs_page_input_path = "TargetLocation.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -80,7 +80,7 @@
     
       
     
-    <li>Type: Target</li>
+    <li>Type: target location</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,16 +91,32 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="type-target">Type: Target</h1>
-<p>URI: <a href="https://w3id.org/gffTarget">gff:Target</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None -&gt;  <sub>OPT</sub> <a href="../TargetLocation/">TargetLocation</a></p>
-<h2 id="parents">Parents</h2>
+                <h1 id="type-target-location">Type: target location</h1>
+<p>URI: <a href="https://w3id.org/gffTargetLocation">gff:TargetLocation</a></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[TargetLocation&#124;seqid:string;start:integer;end:integer]" /></p>
+<h2 id="referenced-by-class">Referenced by class</h2>
 <ul>
-<li>is_a: <a href="../gff_attribute/">gff attribute</a></li>
+<li><strong>None</strong> <em><a href="../Target/">Target</a></em>  <sub>OPT</sub>  <strong><a href="./">TargetLocation</a></strong></li>
 </ul>
-<h2 id="children">Children</h2>
-<h2 id="used-by">Used by</h2>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../end/">end</a>  <sub>REQ</sub><ul>
+<li>Description: The end of the feature in positive 1-based integer coordinates</li>
+<li>range: <a href="../types/Integer/">Integer</a></li>
+</ul>
+</li>
+<li><a href="../seqid/">seqid</a>  <sub>REQ</sub><ul>
+<li>Description: The ID of the landmark used to establish the coordinate system for the current feature.</li>
+<li>range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../start/">start</a>  <sub>REQ</sub><ul>
+<li>Description: The start of the feature in positive 1-based integer coordinates</li>
+<li>range: <a href="../types/Integer/">Integer</a></li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>
