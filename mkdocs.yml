@@ -1,4 +1,4 @@
-site_name: "{{schema.description}}"
+site_name: "GFF Schema (DRAFT, pre-alpha)"
 theme: readthedocs
 nav:
   - Home: home.md

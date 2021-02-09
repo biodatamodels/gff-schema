@@ -10,15 +10,29 @@ prefixes:
 default_prefix: gff
 
 slots:
+  gff attribute:
+    abstract: true
+    
+  gff column:
+    abstract: true
+    
   seqid:
+    is_a: gff column
     description: The ID of the landmark used to establish the coordinate system for the current feature.
     range: string ## make this an object
     required: true
+  source:
+    is_a: gff column
+    description: The source is a free text qualifier intended to describe the algorithm or operating procedure that generated this feature.
+    range: string ## make this an object
+    required: true
   type:
-    range: string ## TODO: ontology class
+    is_a: gff column
+    range: controlled term type
     description: >-
       A type from the sequence ontology
       slot_uri: rdf:type
+    pattern: "^SO:\\d+"
   start:
     is_a: gff coordinate
     description: The start of the feature in positive 1-based integer coordinates
@@ -40,6 +54,10 @@ slots:
       The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).
     exact_mappings:
       - biolink:strand
+  score:
+    description: >-
+      The score of the feature, a floating point number. As in earlier versions of the format, the semantics of the score are ill-defined. It is strongly recommended that E-values be used for sequence similarity features, and that P-values be used for ab initio gene prediction features.
+    range: float
   phase:
     range: integer
     minimum_value: 0
@@ -49,12 +67,9 @@ slots:
     exact_mappings:
       - biolink:phase
 
-  gff attribute:
-    abstract: true
-    
   Ontology term:
     is_a: gff attribute
-    range: string ## change to controlled later
+    range: controlled term type
     multivalued: true
 
   ID:
@@ -65,19 +80,43 @@ slots:
     is_a: gff attribute
     range: genome feature
     multivalued: true
+  Derives from:
+    is_a: gff attribute
+    range: genome feature
+    multivalued: true
   Name:
     is_a: gff attribute
     range: string
+  Aliases:
+    is_a: gff attribute
+    range: string
+    multivalued: true
     
   gff coordinate:
+    is_a: gff column
     range: integer
     minimum_value: 1
     description: A positive 1-based integer coordinate indicating start or end
     comments:
       - "For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature."
 
+  has attributes:
+    range: genome feature attribute set
 
 classes:
+
+  seq:
+    slots:
+      - ID
+
+  genome feature attribute set:
+    comments:
+      - an equally valid decision decision is to fold this directly into the genome feature class
+    slots:
+      - ID
+      - Name
+      - Parent
+      - Ontology term
 
   genome feature:
     description: >-
@@ -86,17 +125,27 @@ classes:
       - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
     slots:
       - seqid
+      - source
       - type
       - strand
       - start
       - end
       - phase
-      - ID
-      - Name
-      - Parent
-      - Ontology term
-      
+      - has attributes
 
       
 
-      
+types:
+  controlled term type:
+    typeof: uriorcurie
+    description: >-
+      An IRI
+
+enums:
+  strand enum:
+    description: strand
+    permissible_values:
+      "+": Positive
+      "-": Negative
+      ".": Unstranded
+      "?": Unknown

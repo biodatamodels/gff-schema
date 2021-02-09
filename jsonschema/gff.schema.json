@@ -6,27 +6,12 @@
          "additionalProperties": false,
          "description": "A feature localized to an interval along a genome",
          "properties": {
-            "ID": {
-               "type": "string"
-            },
-            "Name": {
-               "type": "string"
-            },
-            "Ontology_term": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
-            "Parent": {
-               "items": {
-                  "type": "string"
-               },
-               "type": "array"
-            },
             "end": {
                "description": "The end of the feature in positive 1-based integer coordinates",
                "type": "integer"
+            },
+            "has_attributes": {
+               "type": "string"
             },
             "phase": {
                "description": "The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.",
@@ -34,6 +19,10 @@
             },
             "seqid": {
                "description": "The ID of the landmark used to establish the coordinate system for the current feature.",
+               "type": "string"
+            },
+            "source": {
+               "description": "The source is a free text qualifier intended to describe the algorithm or operating procedure that generated this feature.",
                "type": "string"
             },
             "start": {
@@ -51,11 +40,54 @@
          },
          "required": [
             "seqid",
+            "source",
             "start",
-            "end",
-            "ID"
+            "end"
          ],
          "title": "GenomeFeature",
+         "type": "object"
+      },
+      "GenomeFeatureAttributeSet": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "ID": {
+               "type": "string"
+            },
+            "Name": {
+               "type": "string"
+            },
+            "Ontology_term": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "Parent": {
+               "items": {
+                  "$ref": "#/definitions/GenomeFeature"
+               },
+               "type": "array"
+            }
+         },
+         "required": [
+            "ID"
+         ],
+         "title": "GenomeFeatureAttributeSet",
+         "type": "object"
+      },
+      "Seq": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "ID": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "ID"
+         ],
+         "title": "Seq",
          "type": "object"
       }
    },

@@ -4,6 +4,8 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX metatype: <https://w3id.org/biolink/biolinkml/meta/types/>
 
 
+<https://w3id.org/gffControlledTermType> IRI
+
 metatype:String xsd:string
 
 metatype:Integer xsd:integer
@@ -34,16 +36,30 @@ metatype:Nodeidentifier NONLITERAL
 
 <https://w3id.org/gffGenomeFeature> CLOSED {
     (  $<https://w3id.org/gffGenomeFeature_tes> (  <https://w3id.org/gffseqid> @metatype:String ;
-          <https://w3id.org/gfftype> @metatype:String ? ;
+          <https://w3id.org/gffsource> @metatype:String ;
+          <https://w3id.org/gfftype> @<https://w3id.org/gffControlledTermType> ? ;
           <https://w3id.org/gffstrand> @metatype:String ? ;
           <https://w3id.org/gffstart> @metatype:Integer ;
           <https://w3id.org/gffend> @metatype:Integer ;
           <https://w3id.org/gffphase> @metatype:Integer ? ;
-          <https://w3id.org/gffName> @metatype:String ? ;
-          <https://w3id.org/gffParent> @<https://w3id.org/gffGenomeFeature> * ;
-          <https://w3id.org/gffOntology_term> @metatype:String *
+          <https://w3id.org/gffhas_attributes> @<https://w3id.org/gffGenomeFeatureAttributeSet> ?
        ) ;
-       rdf:type [ <https://w3id.org/gffGenomeFeature> ]
+       rdf:type [ <https://w3id.org/gffGenomeFeature> ] ?
+    )
+}
+
+<https://w3id.org/gffGenomeFeatureAttributeSet> CLOSED {
+    (  $<https://w3id.org/gffGenomeFeatureAttributeSet_tes> (  <https://w3id.org/gffName> @metatype:String ? ;
+          <https://w3id.org/gffParent> @<https://w3id.org/gffGenomeFeature> * ;
+          <https://w3id.org/gffOntology_term> @<https://w3id.org/gffControlledTermType> *
+       ) ;
+       rdf:type [ <https://w3id.org/gffGenomeFeatureAttributeSet> ]
+    )
+}
+
+<https://w3id.org/gffSeq> CLOSED {
+    (  $<https://w3id.org/gffSeq_tes> rdf:type . * ;
+       rdf:type [ <https://w3id.org/gffSeq> ]
     )
 }
 

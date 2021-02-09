@@ -1,15 +1,26 @@
 type GenomeFeature
   {
     seqid: String!
-    type: String
+    source: String!
+    type: ControlledTermType
     strand: String
     start: Integer!
     end: Integer!
     phase: Integer
+    hasAttributes: GenomeFeatureAttributeSet
+  }
+
+type GenomeFeatureAttributeSet
+  {
     iD: Uriorcurie!
     name: String
     parent: [GenomeFeature]
-    ontologyTerm: [String]
+    ontologyTerm: [ControlledTermType]
+  }
+
+type Seq
+  {
+    iD: Uriorcurie!
   }
 
 
