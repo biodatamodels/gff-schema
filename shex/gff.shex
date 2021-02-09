@@ -38,7 +38,7 @@ metatype:Nodeidentifier NONLITERAL
     (  $<https://w3id.org/gffGenomeFeature_tes> (  <https://w3id.org/gffseqid> @metatype:String ;
           <https://w3id.org/gffsource> @metatype:String ;
           <https://w3id.org/gfftype> @<https://w3id.org/gffControlledTermType> ? ;
-          <https://w3id.org/gffstrand> @metatype:String ? ;
+          <https://w3id.org/gffstrand> @<https://w3id.org/gffStrandEnum> ? ;
           <https://w3id.org/gffstart> @metatype:Integer ;
           <https://w3id.org/gffend> @metatype:Integer ;
           <https://w3id.org/gffphase> @metatype:Integer ? ;

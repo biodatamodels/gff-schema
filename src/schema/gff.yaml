@@ -52,6 +52,7 @@ slots:
     ## TODO: enum
     description: >-
       The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).
+    range: strand_enum
     exact_mappings:
       - biolink:strand
   score:
@@ -142,7 +143,7 @@ types:
       An IRI
 
 enums:
-  strand enum:
+  strand_enum:
     description: strand
     permissible_values:
       "+": Positive

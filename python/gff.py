@@ -1,5 +1,5 @@
 # Auto generated from gff.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-02-08 17:39
+# Generation date: 2021-02-08 17:40
 # Schema: GFF
 #
 # id: https://w3id.org/gff
@@ -132,7 +132,7 @@ class GenomeFeature(YAMLRoot):
     start: int = None
     end: int = None
     type: Optional[Union[str, ControlledTermType]] = None
-    strand: Optional[str] = None
+    strand: Optional[Union[str, "StrandEnum"]] = None
     phase: Optional[int] = None
     has_attributes: Optional[Union[str, GenomeFeatureAttributeSetID]] = None
 
@@ -160,8 +160,8 @@ class GenomeFeature(YAMLRoot):
         if self.type is not None and not isinstance(self.type, ControlledTermType):
             self.type = ControlledTermType(self.type)
 
-        if self.strand is not None and not isinstance(self.strand, str):
-            self.strand = str(self.strand)
+        if self.strand is not None and not isinstance(self.strand, StrandEnum):
+            self.strand = StrandEnum(self.strand)
 
         if self.phase is not None and not isinstance(self.phase, int):
             self.phase = int(self.phase)
@@ -224,7 +224,7 @@ slots.end = Slot(uri=GFF.end, name="end", curie=GFF.curie('end'),
                    model_uri=GFF.end, domain=None, range=int)
 
 slots.strand = Slot(uri=GFF.strand, name="strand", curie=GFF.curie('strand'),
-                   model_uri=GFF.strand, domain=None, range=Optional[str])
+                   model_uri=GFF.strand, domain=None, range=Optional[Union[str, "StrandEnum"]])
 
 slots.score = Slot(uri=GFF.score, name="score", curie=GFF.curie('score'),
                    model_uri=GFF.score, domain=None, range=Optional[float])

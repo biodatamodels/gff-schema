@@ -3,7 +3,7 @@ type GenomeFeature
     seqid: String!
     source: String!
     type: ControlledTermType
-    strand: String
+    strand: StrandEnum
     start: Integer!
     end: Integer!
     phase: Integer
