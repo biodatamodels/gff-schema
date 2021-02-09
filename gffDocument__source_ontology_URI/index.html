@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Type: gff attribute - GFF Schema (DRAFT, pre-alpha)</title>
+  <title>Type: gffDocument__source_ontology_URI - GFF Schema (DRAFT, pre-alpha)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Type: gff attribute";
-    var mkdocs_page_input_path = "gff_attribute.md";
+    var mkdocs_page_name = "Type: gffDocument__source_ontology_URI";
+    var mkdocs_page_input_path = "gffDocument__source_ontology_URI.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -80,7 +80,7 @@
     
       
     
-    <li>Type: gff attribute</li>
+    <li>Type: gffDocument__source_ontology_URI</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,26 +91,20 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="type-gff-attribute">Type: gff attribute</h1>
-<p>URI: <a href="https://w3id.org/gffgff_attribute">gff:gff_attribute</a></p>
+                <h1 id="type-gffdocument__source_ontology_uri">Type: gffDocument__source_ontology_URI</h1>
+<p>This directive indicates that the GFF3 uses the ontology of source names located at the indicated URI or URL.</p>
+<p>URI: <a href="https://w3id.org/gffgffDocument__source_ontology_URI">gff:gffDocument__source_ontology_URI</a></p>
 <h2 id="domain-and-range">Domain and Range</h2>
-<p>None -&gt;  <sub>OPT</sub> <a href="../types/String/">String</a></p>
+<p>None -&gt;  <sub>0..*</sub> <a href="../types/Uriorcurie/">Uriorcurie</a></p>
 <h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
 <ul>
-<li><a href="../Aliases/">Aliases</a></li>
-<li><a href="../Dbxref/">Dbxref</a></li>
-<li><a href="../Derives_from/">Derives from</a></li>
-<li><a href="../Gap/">Gap</a></li>
-<li><a href="../ID/">ID</a></li>
-<li><a href="../Is_circular/">Is circular</a></li>
-<li><a href="Name.md">Name</a></li>
-<li><a href="../Note/">Note</a></li>
-<li><a href="Ontology_term.md">Ontology term</a></li>
-<li><a href="../Parent/">Parent</a></li>
-<li><a href="../Target/">Target</a></li>
+<li>is_a: <a href="../ontology_URI/">ontology URI</a></li>
 </ul>
+<h2 id="children">Children</h2>
 <h2 id="used-by">Used by</h2>
+<ul>
+<li><a href="../GffDocument/">GffDocument</a></li>
+</ul>
               
             </div>
           </div>

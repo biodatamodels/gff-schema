@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Type: gff attribute - GFF Schema (DRAFT, pre-alpha)</title>
+  <title>Type: gff document - GFF Schema (DRAFT, pre-alpha)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Type: gff attribute";
-    var mkdocs_page_input_path = "gff_attribute.md";
+    var mkdocs_page_name = "Type: gff document";
+    var mkdocs_page_input_path = "GffDocument.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -80,7 +80,7 @@
     
       
     
-    <li>Type: gff attribute</li>
+    <li>Type: gff document</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,26 +91,53 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="type-gff-attribute">Type: gff attribute</h1>
-<p>URI: <a href="https://w3id.org/gffgff_attribute">gff:gff_attribute</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None -&gt;  <sub>OPT</sub> <a href="../types/String/">String</a></p>
-<h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
+                <h1 id="type-gff-document">Type: gff document</h1>
+<p>Collection of GFF features and metadata</p>
+<p>URI: <a href="https://w3id.org/gffGffDocument">gff:GffDocument</a></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[SequenceRegionValue],[Seq],[GenomeFeature]&lt;features%200..*-++[GffDocument&#124;gff_version:string%20%3F;feature_ontology_URI:uriorcurie%20*;attribute_ontology_URI:uriorcurie%20*;source_ontology_URI:uriorcurie%20*;species:uriorcurie%20%3F],[Seq]&lt;sequences%200..*-%20[GffDocument],[GenomeBuildValue]&lt;genome%20build%200..1-++[GffDocument],[SequenceRegionValue]&lt;sequence%20region%200..1-++[GffDocument],[GenomeFeature],[GenomeBuildValue]" /></p>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
 <ul>
-<li><a href="../Aliases/">Aliases</a></li>
-<li><a href="../Dbxref/">Dbxref</a></li>
-<li><a href="../Derives_from/">Derives from</a></li>
-<li><a href="../Gap/">Gap</a></li>
-<li><a href="../ID/">ID</a></li>
-<li><a href="../Is_circular/">Is circular</a></li>
-<li><a href="Name.md">Name</a></li>
-<li><a href="../Note/">Note</a></li>
-<li><a href="Ontology_term.md">Ontology term</a></li>
-<li><a href="../Parent/">Parent</a></li>
-<li><a href="../Target/">Target</a></li>
+<li><a href="../gffDocument__attribute_ontology_URI/">➞attribute ontology URI</a>  <sub>0..*</sub><ul>
+<li>Description: This directive indicates that the GFF3 uses the ontology of attribute names located at the indicated URI or URL.</li>
+<li>range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
 </ul>
-<h2 id="used-by">Used by</h2>
+</li>
+<li><a href="../gffDocument__feature_ontology_URI/">➞feature ontology URI</a>  <sub>0..*</sub><ul>
+<li>Description: This directive indicates that the GFF3 file uses the ontology of feature types located at the indicated URI or URL.</li>
+<li>range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../gffDocument__features/">➞features</a>  <sub>0..*</sub><ul>
+<li>range: <a href="../GenomeFeature/">GenomeFeature</a></li>
+</ul>
+</li>
+<li><a href="../gffDocument__genome_build/">➞genome build</a>  <sub>OPT</sub><ul>
+<li>range: <a href="../GenomeBuildValue/">GenomeBuildValue</a></li>
+</ul>
+</li>
+<li><a href="../gffDocument__gff_version/">➞gff version</a>  <sub>OPT</sub><ul>
+<li>range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../gffDocument__sequence_region/">➞sequence region</a>  <sub>OPT</sub><ul>
+<li>range: <a href="../SequenceRegionValue/">SequenceRegionValue</a></li>
+</ul>
+</li>
+<li><a href="../gffDocument__sequences/">➞sequences</a>  <sub>0..*</sub><ul>
+<li>range: <a href="../Seq/">Seq</a></li>
+</ul>
+</li>
+<li><a href="../gffDocument__source_ontology_URI/">➞source ontology URI</a>  <sub>0..*</sub><ul>
+<li>Description: This directive indicates that the GFF3 uses the ontology of source names located at the indicated URI or URL.</li>
+<li>range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../gffDocument__species/">➞species</a>  <sub>OPT</sub><ul>
+<li>range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>

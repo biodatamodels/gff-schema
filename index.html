@@ -113,18 +113,32 @@
 <ul>
 <li><a href="GenomeFeature/">GenomeFeature</a> - A feature localized to an interval along a genome</li>
 <li><a href="GenomeFeatureAttributeSet/">GenomeFeatureAttributeSet</a></li>
+<li><a href="GffDocument/">GffDocument</a> - Collection of GFF features and metadata</li>
+<li><a href="Metadata/">Metadata</a><ul>
+<li><a href="GenomeBuildValue/">GenomeBuildValue</a></li>
+<li><a href="SequenceRegionValue/">SequenceRegionValue</a></li>
+</ul>
+</li>
 <li><a href="Seq/">Seq</a></li>
 </ul>
 <h3 id="mixins">Mixins</h3>
 <h3 id="slots">Slots</h3>
 <ul>
+<li><a href="genomeBuildValue__name/">➞name</a></li>
+<li><a href="genomeBuildValue__source/">➞source</a></li>
+<li><a href="genomeBuildValue__species/">➞species</a></li>
 <li><a href="gff_attribute/">gff attribute</a><ul>
 <li><a href="Aliases/">Aliases</a></li>
+<li><a href="Dbxref/">Dbxref</a></li>
 <li><a href="Derives_from/">Derives from</a></li>
+<li><a href="Gap/">Gap</a></li>
 <li><a href="ID/">ID</a></li>
+<li><a href="Is_circular/">Is circular</a></li>
 <li><a href="Name.md">Name</a></li>
+<li><a href="Note/">Note</a></li>
 <li><a href="Ontology_term.md">Ontology term</a></li>
 <li><a href="Parent/">Parent</a></li>
+<li><a href="Target/">Target</a></li>
 </ul>
 </li>
 <li><a href="gff_column/">gff column</a><ul>
@@ -136,7 +150,21 @@
 <li><a href="type/">type</a> - A type from the sequence ontology slot_uri: rdf:type</li>
 </ul>
 </li>
+<li><a href="gffDocument__features/">➞features</a></li>
+<li><a href="gffDocument__gff_version/">➞gff version</a></li>
+<li><a href="gffDocument__sequences/">➞sequences</a></li>
 <li><a href="has_attributes/">has attributes</a></li>
+<li><a href="has_metadata/">has metadata</a><ul>
+<li><a href="gffDocument__genome_build/">➞genome build</a></li>
+<li><a href="gffDocument__sequence_region/">➞sequence region</a></li>
+<li><a href="gffDocument__species/">➞species</a></li>
+<li><a href="ontology_URI/">ontology URI</a></li>
+<li><a href="gffDocument__attribute_ontology_URI/">➞attribute ontology URI</a> - This directive indicates that the GFF3 uses the ontology of attribute names located at the indicated URI or URL.</li>
+<li><a href="gffDocument__feature_ontology_URI/">➞feature ontology URI</a> - This directive indicates that the GFF3 file uses the ontology of feature types located at the indicated URI or URL.</li>
+<li><a href="gffDocument__source_ontology_URI/">➞source ontology URI</a> - This directive indicates that the GFF3 uses the ontology of source names located at the indicated URI or URL.</li>
+</ul>
+</li>
+<li><a href="has_sequence_string/">has sequence string</a></li>
 <li><a href="phase/">phase</a> - The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.</li>
 <li><a href="score/">score</a> - The score of the feature, a floating point number. As in earlier versions of the format, the semantics of the score are ill-defined. It is strongly recommended that E-values be used for sequence similarity features, and that P-values be used for ab initio gene prediction features.</li>
 <li><a href="strand/">strand</a> - The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).</li>
@@ -233,5 +261,5 @@
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-02-09 01:42:31.162005+00:00
+Build Date UTC : 2021-02-09 02:39:44.212351+00:00
 -->

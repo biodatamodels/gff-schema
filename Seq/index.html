@@ -93,12 +93,20 @@
               
                 <h1 id="type-seq">Type: seq</h1>
 <p>URI: <a href="https://w3id.org/gffSeq">gff:Seq</a></p>
-<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[Seq&#124;ID:uriorcurie]" /></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[GffDocument]-%20sequences%200..*&gt;[Seq&#124;ID:uriorcurie;has_sequence_string:sequence_enum%20%3F],[GffDocument]" /></p>
+<h2 id="referenced-by-class">Referenced by class</h2>
+<ul>
+<li><strong>None</strong> <em><a href="../gffDocument__sequences/">➞sequences</a></em>  <sub>0..<em></sub>  </em><em><a href="./">Seq</a></em>*</li>
+</ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
 <li><a href="../ID/">ID</a>  <sub>REQ</sub><ul>
 <li>range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="../has_sequence_string/">has sequence string</a>  <sub>OPT</sub><ul>
+<li>range: </li>
 </ul>
 </li>
 </ul>

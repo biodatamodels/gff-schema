@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Type: gff attribute - GFF Schema (DRAFT, pre-alpha)</title>
+  <title>Type: sequence region value - GFF Schema (DRAFT, pre-alpha)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Type: gff attribute";
-    var mkdocs_page_input_path = "gff_attribute.md";
+    var mkdocs_page_name = "Type: sequence region value";
+    var mkdocs_page_input_path = "SequenceRegionValue.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -80,7 +80,7 @@
     
       
     
-    <li>Type: gff attribute</li>
+    <li>Type: sequence region value</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -91,26 +91,36 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="type-gff-attribute">Type: gff attribute</h1>
-<p>URI: <a href="https://w3id.org/gffgff_attribute">gff:gff_attribute</a></p>
-<h2 id="domain-and-range">Domain and Range</h2>
-<p>None -&gt;  <sub>OPT</sub> <a href="../types/String/">String</a></p>
+                <h1 id="type-sequence-region-value">Type: sequence region value</h1>
+<p>URI: <a href="https://w3id.org/gffSequenceRegionValue">gff:SequenceRegionValue</a></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[GffDocument]++-%20sequence%20region%200..1&gt;[SequenceRegionValue&#124;seqid:string;start:integer;end:integer],[Metadata]^-[SequenceRegionValue],[Metadata],[GffDocument]" /></p>
 <h2 id="parents">Parents</h2>
-<h2 id="children">Children</h2>
 <ul>
-<li><a href="../Aliases/">Aliases</a></li>
-<li><a href="../Dbxref/">Dbxref</a></li>
-<li><a href="../Derives_from/">Derives from</a></li>
-<li><a href="../Gap/">Gap</a></li>
-<li><a href="../ID/">ID</a></li>
-<li><a href="../Is_circular/">Is circular</a></li>
-<li><a href="Name.md">Name</a></li>
-<li><a href="../Note/">Note</a></li>
-<li><a href="Ontology_term.md">Ontology term</a></li>
-<li><a href="../Parent/">Parent</a></li>
-<li><a href="../Target/">Target</a></li>
+<li>is_a: <a href="../Metadata/">Metadata</a></li>
 </ul>
-<h2 id="used-by">Used by</h2>
+<h2 id="referenced-by-class">Referenced by class</h2>
+<ul>
+<li><strong>None</strong> <em><a href="../gffDocument__sequence_region/">➞sequence region</a></em>  <sub>OPT</sub>  <strong><a href="./">SequenceRegionValue</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../end/">end</a>  <sub>REQ</sub><ul>
+<li>Description: The end of the feature in positive 1-based integer coordinates</li>
+<li>range: <a href="../types/Integer/">Integer</a></li>
+</ul>
+</li>
+<li><a href="../seqid/">seqid</a>  <sub>REQ</sub><ul>
+<li>Description: The ID of the landmark used to establish the coordinate system for the current feature.</li>
+<li>range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../start/">start</a>  <sub>REQ</sub><ul>
+<li>Description: The start of the feature in positive 1-based integer coordinates</li>
+<li>range: <a href="../types/Integer/">Integer</a></li>
+</ul>
+</li>
+</ul>
               
             </div>
           </div>
