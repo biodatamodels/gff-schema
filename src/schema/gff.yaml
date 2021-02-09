@@ -13,9 +13,9 @@ slots:
   seqid:
     description: The ID of the landmark used to establish the coordinate system for the current feature.
     range: string ## make this an object
-  required: true
+    required: true
   type:
-    range: ontology class
+    range: string ## TODO: ontology class
     description: >-
       A type from the sequence ontology
       slot_uri: rdf:type
@@ -64,6 +64,13 @@ slots:
     is_a: gff attribute
     range: string
     
+  gff coordinate:
+    range: integer
+    minimum_value: 1
+    description: A positive 1-based integer coordinate indicating start or end
+    comments:
+      - "For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature."
+
 
 classes:
 
@@ -81,5 +88,6 @@ classes:
       - phase
       - ontology term
 
+      
 
       

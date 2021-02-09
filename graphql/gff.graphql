@@ -1,0 +1,12 @@
+type GenomeFeature
+  {
+    seqid: String!
+    type: String
+    strand: String
+    start: Integer!
+    end: Integer!
+    phase: Integer
+    ontologyTerm: [String]
+  }
+
+

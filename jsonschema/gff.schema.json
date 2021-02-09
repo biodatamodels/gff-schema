@@ -1,0 +1,53 @@
+{
+   "$id": "https://w3id.org/gff",
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "definitions": {
+      "GenomeFeature": {
+         "additionalProperties": false,
+         "description": "A feature localized to an interval along a genome",
+         "properties": {
+            "end": {
+               "description": "The end of the feature in positive 1-based integer coordinates",
+               "type": "integer"
+            },
+            "ontology_term": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "phase": {
+               "description": "The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.",
+               "type": "integer"
+            },
+            "seqid": {
+               "description": "The ID of the landmark used to establish the coordinate system for the current feature.",
+               "type": "string"
+            },
+            "start": {
+               "description": "The start of the feature in positive 1-based integer coordinates",
+               "type": "integer"
+            },
+            "strand": {
+               "description": "The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).",
+               "type": "string"
+            },
+            "type": {
+               "description": "A type from the sequence ontology slot_uri: rdf:type",
+               "type": "string"
+            }
+         },
+         "required": [
+            "seqid",
+            "start",
+            "end"
+         ],
+         "title": "GenomeFeature",
+         "type": "object"
+      }
+   },
+   "properties": {},
+   "title": "GFF",
+   "type": "object"
+}
+
