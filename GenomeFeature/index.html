@@ -94,17 +94,33 @@
                 <h1 id="type-genome-feature">Type: genome feature</h1>
 <p>A feature localized to an interval along a genome</p>
 <p>URI: <a href="https://w3id.org/gffGenomeFeature">gff:GenomeFeature</a></p>
-<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[GenomeFeature&#124;seqid:string;type:string%20%3F;strand:string%20%3F;start:integer;end:integer;phase:integer%20%3F;ontology_term:string%20*]" /></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[GenomeFeature]&lt;Parent%200..*-%20[GenomeFeature&#124;seqid:string;type:string%20%3F;strand:string%20%3F;start:integer;end:integer;phase:integer%20%3F;ID:uriorcurie;Name:string%20%3F;Ontology_term:string%20*]" /></p>
+<h2 id="referenced-by-class">Referenced by class</h2>
+<ul>
+<li><strong>None</strong> <em><a href="../Parent/">Parent</a></em>  <sub>0..<em></sub>  </em><em><a href="./">GenomeFeature</a></em>*</li>
+</ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
+<li><a href="../ID/">ID</a>  <sub>REQ</sub><ul>
+<li>range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="Name.md">Name</a>  <sub>OPT</sub><ul>
+<li>range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="Ontology_term.md">Ontology term</a>  <sub>0..*</sub><ul>
+<li>range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="../Parent/">Parent</a>  <sub>0..*</sub><ul>
+<li>range: <a href="./">GenomeFeature</a></li>
+</ul>
+</li>
 <li><a href="../end/">end</a>  <sub>REQ</sub><ul>
 <li>Description: The end of the feature in positive 1-based integer coordinates</li>
 <li>range: <a href="../types/Integer/">Integer</a></li>
-</ul>
-</li>
-<li><a href="../ontology_term/">ontology term</a>  <sub>0..*</sub><ul>
-<li>range: <a href="../types/String/">String</a></li>
 </ul>
 </li>
 <li><a href="../phase/">phase</a>  <sub>OPT</sub><ul>
