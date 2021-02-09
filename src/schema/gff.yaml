@@ -7,6 +7,8 @@ imports:
 prefixes:
   biolinkml: https://w3id.org/biolink/biolinkml/
   gff: https://w3id.org/gff
+  faldo: "http://biohackathon.org/resource/faldo#"
+  gfvo: "http://www.biointerchange.org/gfvo#"
 default_prefix: gff
 
 slots:
@@ -39,6 +41,8 @@ slots:
     required: true
     close_mappings:
       - biolink:start_interbase_coordinate
+    exact_mappings:
+      - faldo:begin
   end:
     is_a: gff coordinate
     description: The end of the feature in positive 1-based integer coordinates
@@ -48,6 +52,8 @@ slots:
     required: true
     close_mappings:
       - biolink:end_interbase_coordinate
+    exact_mappings:
+      - faldo:end
   strand:
     ## TODO: enum
     description: >-
@@ -134,8 +140,6 @@ classes:
       - phase
       - has attributes
 
-      
-
 types:
   controlled term type:
     typeof: uriorcurie
@@ -146,7 +150,14 @@ enums:
   strand_enum:
     description: strand
     permissible_values:
-      "+": Positive
-      "-": Negative
-      ".": Unstranded
-      "?": Unknown
+      "+":
+        description: Positive
+        meaning: faldo:ForwardStrandPosition
+      "-":
+        description: Negative
+        meaning: faldo:ReverseStrandPosition
+      ".":
+        description: Unstranded
+        meaning: faldo:BothStrandsPosition
+      "?":
+        description: Unknown
