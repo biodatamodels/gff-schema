@@ -52,7 +52,7 @@ slots:
   gff attribute:
     abstract: true
     
-  ontology term:
+  Ontology term:
     is_a: gff attribute
     range: string ## change to controlled later
     multivalued: true
@@ -60,7 +60,12 @@ slots:
   ID:
     is_a: gff attribute
     range: uriorcurie
-  name:
+    identifier: true
+  Parent:
+    is_a: gff attribute
+    range: genome feature
+    multivalued: true
+  Name:
     is_a: gff attribute
     range: string
     
@@ -86,7 +91,11 @@ classes:
       - start
       - end
       - phase
-      - ontology term
+      - ID
+      - Name
+      - Parent
+      - Ontology term
+      
 
       
 

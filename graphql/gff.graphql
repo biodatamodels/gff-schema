@@ -6,6 +6,9 @@ type GenomeFeature
     start: Integer!
     end: Integer!
     phase: Integer
+    iD: Uriorcurie!
+    name: String
+    parent: [GenomeFeature]
     ontologyTerm: [String]
   }
 

@@ -39,9 +39,11 @@ metatype:Nodeidentifier NONLITERAL
           <https://w3id.org/gffstart> @metatype:Integer ;
           <https://w3id.org/gffend> @metatype:Integer ;
           <https://w3id.org/gffphase> @metatype:Integer ? ;
-          <https://w3id.org/gffontology_term> @metatype:String *
+          <https://w3id.org/gffName> @metatype:String ? ;
+          <https://w3id.org/gffParent> @<https://w3id.org/gffGenomeFeature> * ;
+          <https://w3id.org/gffOntology_term> @metatype:String *
        ) ;
-       rdf:type [ <https://w3id.org/gffGenomeFeature> ] ?
+       rdf:type [ <https://w3id.org/gffGenomeFeature> ]
     )
 }
 

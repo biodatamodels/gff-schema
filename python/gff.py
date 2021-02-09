@@ -1,5 +1,5 @@
 # Auto generated from gff.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-02-08 16:54
+# Generation date: 2021-02-08 17:00
 # Schema: GFF
 #
 # id: https://w3id.org/gff
@@ -41,7 +41,8 @@ DEFAULT_ = GFF
 # Types
 
 # Class references
-
+class GenomeFeatureID(URIorCURIE):
+    pass
 
 
 @dataclass
@@ -56,15 +57,23 @@ class GenomeFeature(YAMLRoot):
     class_name: ClassVar[str] = "genome feature"
     class_model_uri: ClassVar[URIRef] = GFF.GenomeFeature
 
+    ID: Union[str, GenomeFeatureID] = None
     seqid: str = None
     start: int = None
     end: int = None
     type: Optional[str] = None
     strand: Optional[str] = None
     phase: Optional[int] = None
-    ontology_term: Optional[Union[str, List[str]]] = empty_list()
+    Name: Optional[str] = None
+    Parent: Optional[Union[Union[str, GenomeFeatureID], List[Union[str, GenomeFeatureID]]]] = empty_list()
+    Ontology_term: Optional[Union[str, List[str]]] = empty_list()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.ID is None:
+            raise ValueError("ID must be supplied")
+        if not isinstance(self.ID, GenomeFeatureID):
+            self.ID = GenomeFeatureID(self.ID)
+
         if self.seqid is None:
             raise ValueError("seqid must be supplied")
         if not isinstance(self.seqid, str):
@@ -89,11 +98,20 @@ class GenomeFeature(YAMLRoot):
         if self.phase is not None and not isinstance(self.phase, int):
             self.phase = int(self.phase)
 
-        if self.ontology_term is None:
-            self.ontology_term = []
-        if not isinstance(self.ontology_term, list):
-            self.ontology_term = [self.ontology_term]
-        self.ontology_term = [v if isinstance(v, str) else str(v) for v in self.ontology_term]
+        if self.Name is not None and not isinstance(self.Name, str):
+            self.Name = str(self.Name)
+
+        if self.Parent is None:
+            self.Parent = []
+        if not isinstance(self.Parent, list):
+            self.Parent = [self.Parent]
+        self.Parent = [v if isinstance(v, GenomeFeatureID) else GenomeFeatureID(v) for v in self.Parent]
+
+        if self.Ontology_term is None:
+            self.Ontology_term = []
+        if not isinstance(self.Ontology_term, list):
+            self.Ontology_term = [self.Ontology_term]
+        self.Ontology_term = [v if isinstance(v, str) else str(v) for v in self.Ontology_term]
 
         super().__post_init__(**kwargs)
 
@@ -126,14 +144,17 @@ slots.phase = Slot(uri=GFF.phase, name="phase", curie=GFF.curie('phase'),
 slots.gff_attribute = Slot(uri=GFF.gff_attribute, name="gff attribute", curie=GFF.curie('gff_attribute'),
                    model_uri=GFF.gff_attribute, domain=None, range=Optional[str])
 
-slots.ontology_term = Slot(uri=GFF.ontology_term, name="ontology term", curie=GFF.curie('ontology_term'),
-                   model_uri=GFF.ontology_term, domain=None, range=Optional[Union[str, List[str]]])
+slots.Ontology_term = Slot(uri=GFF.Ontology_term, name="Ontology term", curie=GFF.curie('Ontology_term'),
+                   model_uri=GFF.Ontology_term, domain=None, range=Optional[Union[str, List[str]]])
 
 slots.ID = Slot(uri=GFF.ID, name="ID", curie=GFF.curie('ID'),
-                   model_uri=GFF.ID, domain=None, range=Optional[Union[str, URIorCURIE]])
+                   model_uri=GFF.ID, domain=None, range=URIRef)
 
-slots.name = Slot(uri=GFF.name, name="name", curie=GFF.curie('name'),
-                   model_uri=GFF.name, domain=None, range=Optional[str])
+slots.Parent = Slot(uri=GFF.Parent, name="Parent", curie=GFF.curie('Parent'),
+                   model_uri=GFF.Parent, domain=None, range=Optional[Union[Union[str, GenomeFeatureID], List[Union[str, GenomeFeatureID]]]])
+
+slots.Name = Slot(uri=GFF.Name, name="Name", curie=GFF.curie('Name'),
+                   model_uri=GFF.Name, domain=None, range=Optional[str])
 
 slots.gff_coordinate = Slot(uri=GFF.gff_coordinate, name="gff coordinate", curie=GFF.curie('gff_coordinate'),
                    model_uri=GFF.gff_coordinate, domain=None, range=Optional[int])
