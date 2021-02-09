@@ -1,0 +1,85 @@
+id: https://w3id.org/gff
+name: GFF
+description: >-
+  Playing around with GFF spec
+imports:
+  - biolinkml:types
+prefixes:
+  biolinkml: https://w3id.org/biolink/biolinkml/
+  gff: https://w3id.org/gff
+default_prefix: gff
+
+slots:
+  seqid:
+    description: The ID of the landmark used to establish the coordinate system for the current feature.
+    range: string ## make this an object
+  required: true
+  type:
+    range: ontology class
+    description: >-
+      A type from the sequence ontology
+      slot_uri: rdf:type
+  start:
+    is_a: gff coordinate
+    description: The start of the feature in positive 1-based integer coordinates
+    required: true
+    close_mappings:
+      - biolink:start_interbase_coordinate
+  end:
+    is_a: gff coordinate
+    description: The end of the feature in positive 1-based integer coordinates
+    comments: >-
+      - "constraint: end > start"
+      - "For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature."
+    required: true
+    close_mappings:
+      - biolink:end_interbase_coordinate
+  strand:
+    ## TODO: enum
+    description: >-
+      The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).
+    exact_mappings:
+      - biolink:strand
+  phase:
+    range: integer
+    minimum_value: 0
+    maximum_value: 0
+    description: >-
+      The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.
+    exact_mappings:
+      - biolink:phase
+
+  gff attribute:
+    abstract: true
+    
+  ontology term:
+    is_a: gff attribute
+    range: string ## change to controlled later
+    multivalued: true
+
+  ID:
+    is_a: gff attribute
+    range: uriorcurie
+  name:
+    is_a: gff attribute
+    range: string
+    
+
+classes:
+
+  genome feature:
+    description: >-
+      A feature localized to an interval along a genome
+    see_also:
+      - https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md
+    slots:
+      - seqid
+      - type
+      - strand
+      - start
+      - end
+      - phase
+      - ontology term
+
+
+      
