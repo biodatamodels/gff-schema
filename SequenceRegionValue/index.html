@@ -92,11 +92,12 @@
             <div class="section">
               
                 <h1 id="type-sequence-region-value">Type: sequence region value</h1>
+<p>Used for sequence-region pragmas</p>
 <p>URI: <a href="https://w3id.org/gffSequenceRegionValue">gff:SequenceRegionValue</a></p>
-<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[GffDocument]++-%20sequence%20region%200..1&gt;[SequenceRegionValue&#124;seqid:string;start:integer;end:integer],[Metadata]^-[SequenceRegionValue],[Metadata],[GffDocument]" /></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[Seq]&lt;seqid%201..1-%20[SequenceRegionValue&#124;start:integer;end:integer],[GffDocument]++-%20sequence%20region%200..1&gt;[SequenceRegionValue],[Metadata]^-[SequenceRegionValue],[Seq],[Metadata],[GffDocument]" /></p>
 <h2 id="parents">Parents</h2>
 <ul>
-<li>is_a: <a href="../Metadata/">Metadata</a></li>
+<li>is_a: <a href="../Metadata/">Metadata</a> - A piece of metadata for a GFF document</li>
 </ul>
 <h2 id="referenced-by-class">Referenced by class</h2>
 <ul>
@@ -112,7 +113,7 @@
 </li>
 <li><a href="../seqid/">seqid</a>  <sub>REQ</sub><ul>
 <li>Description: The ID of the landmark used to establish the coordinate system for the current feature.</li>
-<li>range: <a href="../types/String/">String</a></li>
+<li>range: <a href="../Seq/">Seq</a></li>
 </ul>
 </li>
 <li><a href="../start/">start</a>  <sub>REQ</sub><ul>

@@ -94,7 +94,7 @@
                 <h1 id="type-genome-feature">Type: genome feature</h1>
 <p>A feature localized to an interval along a genome</p>
 <p>URI: <a href="https://w3id.org/gffGenomeFeature">gff:GenomeFeature</a></p>
-<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[GenomeFeatureAttributeSet],[GenomeFeatureAttributeSet]&lt;has%20attributes%200..1-%20[GenomeFeature&#124;seqid:string;source:string;type:controlled_term_type%20%3F;strand:strand_enum%20%3F;start:integer;end:integer;phase:phase_enum%20%3F],[GenomeFeatureAttributeSet]++-%20Parent%200..*&gt;[GenomeFeature],[GffDocument]++-%20features%200..*&gt;[GenomeFeature],[GffDocument]" /></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[Seq],[GenomeFeatureAttributeSet],[GenomeFeatureAttributeSet]&lt;has%20attributes%200..1-%20[GenomeFeature&#124;source:string;type:controlled_term_type%20%3F;strand:strand_enum%20%3F;start:integer;end:integer;phase:phase_enum%20%3F],[Seq]&lt;seqid%201..1-%20[GenomeFeature],[GenomeFeatureAttributeSet]++-%20Parent%200..*&gt;[GenomeFeature],[GffDocument]++-%20features%200..*&gt;[GenomeFeature],[GffDocument]" /></p>
 <h2 id="referenced-by-class">Referenced by class</h2>
 <ul>
 <li><strong>None</strong> <em><a href="../Derives_from/">Derives from</a></em>  <sub>0..<em></sub>  </em><em><a href="./">GenomeFeature</a></em>*</li>
@@ -120,7 +120,7 @@
 </li>
 <li><a href="../seqid/">seqid</a>  <sub>REQ</sub><ul>
 <li>Description: The ID of the landmark used to establish the coordinate system for the current feature.</li>
-<li>range: <a href="../types/String/">String</a></li>
+<li>range: <a href="../Seq/">Seq</a></li>
 </ul>
 </li>
 <li><a href="../source/">source</a>  <sub>REQ</sub><ul>
