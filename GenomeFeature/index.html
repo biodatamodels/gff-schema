@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Type: genome feature - {{schema.description}}</title>
+  <title>Type: genome feature - GFF Schema (DRAFT, pre-alpha)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -38,7 +38,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> {{schema.description}}</a>
+        <a href=".." class="icon icon-home"> GFF Schema (DRAFT, pre-alpha)</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -68,7 +68,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">{{schema.description}}</a>
+        <a href="..">GFF Schema (DRAFT, pre-alpha)</a>
       </nav>
 
       
@@ -94,33 +94,22 @@
                 <h1 id="type-genome-feature">Type: genome feature</h1>
 <p>A feature localized to an interval along a genome</p>
 <p>URI: <a href="https://w3id.org/gffGenomeFeature">gff:GenomeFeature</a></p>
-<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[GenomeFeature]&lt;Parent%200..*-%20[GenomeFeature&#124;seqid:string;type:string%20%3F;strand:string%20%3F;start:integer;end:integer;phase:integer%20%3F;ID:uriorcurie;Name:string%20%3F;Ontology_term:string%20*]" /></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[GenomeFeatureAttributeSet],[GenomeFeatureAttributeSet]&lt;has%20attributes%200..1-%20[GenomeFeature&#124;seqid:string;source:string;type:controlled_term_type%20%3F;strand:strand_enum%20%3F;start:integer;end:integer;phase:integer%20%3F],[GenomeFeatureAttributeSet]++-%20Parent%200..*&gt;[GenomeFeature]" /></p>
 <h2 id="referenced-by-class">Referenced by class</h2>
 <ul>
+<li><strong>None</strong> <em><a href="../Derives_from/">Derives from</a></em>  <sub>0..<em></sub>  </em><em><a href="./">GenomeFeature</a></em>*</li>
 <li><strong>None</strong> <em><a href="../Parent/">Parent</a></em>  <sub>0..<em></sub>  </em><em><a href="./">GenomeFeature</a></em>*</li>
 </ul>
 <h2 id="attributes">Attributes</h2>
 <h3 id="own">Own</h3>
 <ul>
-<li><a href="../ID/">ID</a>  <sub>REQ</sub><ul>
-<li>range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
-</ul>
-</li>
-<li><a href="Name.md">Name</a>  <sub>OPT</sub><ul>
-<li>range: <a href="../types/String/">String</a></li>
-</ul>
-</li>
-<li><a href="Ontology_term.md">Ontology term</a>  <sub>0..*</sub><ul>
-<li>range: <a href="../types/String/">String</a></li>
-</ul>
-</li>
-<li><a href="../Parent/">Parent</a>  <sub>0..*</sub><ul>
-<li>range: <a href="./">GenomeFeature</a></li>
-</ul>
-</li>
 <li><a href="../end/">end</a>  <sub>REQ</sub><ul>
 <li>Description: The end of the feature in positive 1-based integer coordinates</li>
 <li>range: <a href="../types/Integer/">Integer</a></li>
+</ul>
+</li>
+<li><a href="../has_attributes/">has attributes</a>  <sub>OPT</sub><ul>
+<li>range: <a href="../GenomeFeatureAttributeSet/">GenomeFeatureAttributeSet</a></li>
 </ul>
 </li>
 <li><a href="../phase/">phase</a>  <sub>OPT</sub><ul>
@@ -133,6 +122,11 @@
 <li>range: <a href="../types/String/">String</a></li>
 </ul>
 </li>
+<li><a href="../source/">source</a>  <sub>REQ</sub><ul>
+<li>Description: The source is a free text qualifier intended to describe the algorithm or operating procedure that generated this feature.</li>
+<li>range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
 <li><a href="../start/">start</a>  <sub>REQ</sub><ul>
 <li>Description: The start of the feature in positive 1-based integer coordinates</li>
 <li>range: <a href="../types/Integer/">Integer</a></li>
@@ -140,12 +134,12 @@
 </li>
 <li><a href="../strand/">strand</a>  <sub>OPT</sub><ul>
 <li>Description: The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).</li>
-<li>range: <a href="../types/String/">String</a></li>
+<li>range: </li>
 </ul>
 </li>
 <li><a href="../type/">type</a>  <sub>OPT</sub><ul>
 <li>Description: A type from the sequence ontology slot_uri: rdf:type</li>
-<li>range: <a href="../types/String/">String</a></li>
+<li>range: <a href="../types/ControlledTermType/">ControlledTermType</a></li>
 </ul>
 </li>
 </ul>

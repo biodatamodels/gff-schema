@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Credits - GFF Schema (DRAFT, pre-alpha)</title>
+  <title>Type: genome feature attribute set - GFF Schema (DRAFT, pre-alpha)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -18,8 +18,8 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Credits";
-    var mkdocs_page_input_path = "credits.md";
+    var mkdocs_page_name = "Type: genome feature attribute set";
+    var mkdocs_page_input_path = "GenomeFeatureAttributeSet.md";
     var mkdocs_page_url = null;
   </script>
   
@@ -55,10 +55,8 @@
                     <li class="toctree-l1"><a class="reference internal" href="..">Index</a>
                     </li>
                 </ul>
-                <ul class="current">
-                    <li class="toctree-l1 current"><a class="reference internal current" href="./">Credits</a>
-    <ul class="current">
-    </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a>
                     </li>
                 </ul>
       </div>
@@ -82,7 +80,7 @@
     
       
     
-    <li>Credits</li>
+    <li>Type: genome feature attribute set</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -93,19 +91,54 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="credits">Credits</h1>
-<p>this project was made using the <a href="https://github.com/biolink/biolinkml">LinkML framework</a></p>
+                <h1 id="type-genome-feature-attribute-set">Type: genome feature attribute set</h1>
+<p>URI: <a href="https://w3id.org/gffGenomeFeatureAttributeSet">gff:GenomeFeatureAttributeSet</a></p>
+<p><img alt="img" src="http://yuml.me/diagram/nofunky;dir:TB/class/[GenomeFeature]&lt;Parent%200..*-++[GenomeFeatureAttributeSet&#124;ID:uriorcurie;Name:string%20%3F;Ontology_term:controlled_term_type%20*],[GenomeFeature]-%20has%20attributes%200..1&gt;[GenomeFeatureAttributeSet],[GenomeFeature]" /></p>
+<h2 id="referenced-by-class">Referenced by class</h2>
+<ul>
+<li><strong>None</strong> <em><a href="../has_attributes/">has attributes</a></em>  <sub>OPT</sub>  <strong><a href="./">GenomeFeatureAttributeSet</a></strong></li>
+</ul>
+<h2 id="attributes">Attributes</h2>
+<h3 id="own">Own</h3>
+<ul>
+<li><a href="../ID/">ID</a>  <sub>REQ</sub><ul>
+<li>range: <a href="../types/Uriorcurie/">Uriorcurie</a></li>
+</ul>
+</li>
+<li><a href="Name.md">Name</a>  <sub>OPT</sub><ul>
+<li>range: <a href="../types/String/">String</a></li>
+</ul>
+</li>
+<li><a href="Ontology_term.md">Ontology term</a>  <sub>0..*</sub><ul>
+<li>range: <a href="../types/ControlledTermType/">ControlledTermType</a></li>
+</ul>
+</li>
+<li><a href="../Parent/">Parent</a>  <sub>0..*</sub><ul>
+<li>range: <a href="../GenomeFeature/">GenomeFeature</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="other-properties">Other properties</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Comments:</strong></td>
+<td></td>
+<td>an equally valid decision decision is to fold this directly into the genome feature class</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href=".." class="btn btn-neutral" title="Index"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -128,8 +161,6 @@
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
-      
-        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
     </span>

@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="img/favicon.ico">
-  <title>{{schema.description}}</title>
+  <title>GFF Schema (DRAFT, pre-alpha)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="css/theme.css" />
@@ -38,7 +38,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href="." class="icon icon-home"> {{schema.description}}</a>
+        <a href="." class="icon icon-home"> GFF Schema (DRAFT, pre-alpha)</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -84,7 +84,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href=".">{{schema.description}}</a>
+        <a href=".">GFF Schema (DRAFT, pre-alpha)</a>
       </nav>
 
       
@@ -112,26 +112,34 @@
 <h3 id="classes">Classes</h3>
 <ul>
 <li><a href="GenomeFeature/">GenomeFeature</a> - A feature localized to an interval along a genome</li>
+<li><a href="GenomeFeatureAttributeSet/">GenomeFeatureAttributeSet</a></li>
+<li><a href="Seq/">Seq</a></li>
 </ul>
 <h3 id="mixins">Mixins</h3>
 <h3 id="slots">Slots</h3>
 <ul>
 <li><a href="gff_attribute/">gff attribute</a><ul>
+<li><a href="Aliases/">Aliases</a></li>
+<li><a href="Derives_from/">Derives from</a></li>
 <li><a href="ID/">ID</a></li>
 <li><a href="Name.md">Name</a></li>
 <li><a href="Ontology_term.md">Ontology term</a></li>
 <li><a href="Parent/">Parent</a></li>
 </ul>
 </li>
-<li><a href="gff_coordinate/">gff coordinate</a> - A positive 1-based integer coordinate indicating start or end<ul>
+<li><a href="gff_column/">gff column</a><ul>
+<li><a href="gff_coordinate/">gff coordinate</a> - A positive 1-based integer coordinate indicating start or end</li>
 <li><a href="end/">end</a> - The end of the feature in positive 1-based integer coordinates</li>
 <li><a href="start/">start</a> - The start of the feature in positive 1-based integer coordinates</li>
+<li><a href="seqid/">seqid</a> - The ID of the landmark used to establish the coordinate system for the current feature.</li>
+<li><a href="source/">source</a> - The source is a free text qualifier intended to describe the algorithm or operating procedure that generated this feature.</li>
+<li><a href="type/">type</a> - A type from the sequence ontology slot_uri: rdf:type</li>
 </ul>
 </li>
+<li><a href="has_attributes/">has attributes</a></li>
 <li><a href="phase/">phase</a> - The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.</li>
-<li><a href="seqid/">seqid</a> - The ID of the landmark used to establish the coordinate system for the current feature.</li>
+<li><a href="score/">score</a> - The score of the feature, a floating point number. As in earlier versions of the format, the semantics of the score are ill-defined. It is strongly recommended that E-values be used for sequence similarity features, and that P-values be used for ab initio gene prediction features.</li>
 <li><a href="strand/">strand</a> - The strand on which a feature is located. Has a value of '+' (sense strand or forward strand) or '-' (anti-sense strand or reverse strand).</li>
-<li><a href="type/">type</a> - A type from the sequence ontology slot_uri: rdf:type</li>
 </ul>
 <h3 id="types">Types</h3>
 <h4 id="built-in">Built in</h4>
@@ -153,6 +161,7 @@
 <h4 id="defined">Defined</h4>
 <ul>
 <li><a href="types/Boolean/">Boolean</a>  (<strong>Bool</strong>)  - A binary (true or false) value</li>
+<li><a href="types/ControlledTermType/">ControlledTermType</a>  (<a href="types/Uriorcurie/">Uriorcurie</a>)  - An IRI</li>
 <li><a href="types/Date/">Date</a>  (<strong>XSDDate</strong>)  - a date (year, month and day) in an idealized calendar</li>
 <li><a href="types/Datetime/">Datetime</a>  (<strong>XSDDateTime</strong>)  - The combination of a date and time</li>
 <li><a href="types/Decimal/">Decimal</a>  (<strong>Decimal</strong>)  - A real number with arbitrary precision that conforms to the xsd:decimal specification</li>
@@ -224,5 +233,5 @@
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-02-09 01:01:12.022850+00:00
+Build Date UTC : 2021-02-09 01:42:31.162005+00:00
 -->

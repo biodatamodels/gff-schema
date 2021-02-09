@@ -9,7 +9,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Home - {{schema.description}}</title>
+  <title>Home - GFF Schema (DRAFT, pre-alpha)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
 
   <link rel="stylesheet" href="../css/theme.css" />
@@ -38,7 +38,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-        <a href=".." class="icon icon-home"> {{schema.description}}</a>
+        <a href=".." class="icon icon-home"> GFF Schema (DRAFT, pre-alpha)</a>
         <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -50,6 +50,18 @@
                 <ul class="current">
                     <li class="toctree-l1 current"><a class="reference internal current" href="./">Home</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what">What</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#why">Why</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#approach">Approach</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#similar-work">Similar Work</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#status-proof-of-concept">Status: PROOF OF CONCEPT</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#repository">Repository</a>
+    </li>
     </ul>
                     </li>
                 </ul>
@@ -70,7 +82,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="..">{{schema.description}}</a>
+        <a href="..">GFF Schema (DRAFT, pre-alpha)</a>
       </nav>
 
       
@@ -94,7 +106,47 @@
             <div class="section">
               
                 <h1 id="introduction">Introduction</h1>
-<p>about my_schema</p>
+<h2 id="what">What</h2>
+<p>This is a repository for a DRAFT of a computable schema for GFF3</p>
+<p>It is designed to separate out the <em>datamodel</em> from the <em>serialization</em> (TSV)</p>
+<p>The schema is specified using a YAML file https://github.com/berkeleybop/gff-schema/blob/main/src/schema/gff.yaml</p>
+<p>This is compiled into multiple artefacts including:</p>
+<ul>
+<li>jsonschema</li>
+<li>ShEx</li>
+<li>graphql</li>
+<li>python object model (dataclasses)</li>
+<li>SQL DDL (soon)</li>
+</ul>
+<p>And also online documentation:</p>
+<p>https://berkeleybop.github.io/gff-schema/</p>
+<h2 id="why">Why</h2>
+<p>Currently the GFF3 spec and proposed extensions or supplementary specs are specified as text. Text is non-computable which means</p>
+<ul>
+<li>additional work in implementing validators</li>
+<li>potential ambiguities in interpretation</li>
+<li>additional work to create anciliary artefacts - e.g. a SQL schema or a JSON schema</li>
+</ul>
+<p>Additionally, GFF3 is a TSV-based format which limits ability to use standard off the shelf validation approaches - e.g. OWL or ShEx validation for RDF, or JSON-Schema for JSON</p>
+<h2 id="approach">Approach</h2>
+<p>This project is neutral on the question of TSV serialization vs JSON serialization vs RDF vs XML ...</p>
+<p>It takes the view that datamodel and serialization are <em>separate concerns</em></p>
+<p>We first define a UML-like abstract data model. We can then have as many serializations as we like</p>
+<ul>
+<li>JSON</li>
+<li>TSV</li>
+</ul>
+<p>The specification of how to map the data model to the TSV becomes a separate (simpler) problem, distinct from specifying the data model itself.</p>
+<p>It could be argued this is overkill </p>
+<h2 id="similar-work">Similar Work</h2>
+<ul>
+<li>GFFO</li>
+<li>FALDO</li>
+</ul>
+<h2 id="status-proof-of-concept">Status: PROOF OF CONCEPT</h2>
+<p>This is currently the work of a 15 minute linkml demo session on a BBOP hangout. Much more needs to be done</p>
+<h2 id="repository">Repository</h2>
+<p>https://github.com/berkeleybop/gff-schema</p>
               
             </div>
           </div>
