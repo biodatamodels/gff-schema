@@ -2,6 +2,24 @@
    "$id": "https://w3id.org/gff",
    "$schema": "http://json-schema.org/draft-07/schema#",
    "definitions": {
+      "GenomeBuildValue": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "name": {
+               "type": "string"
+            },
+            "source": {
+               "type": "string"
+            },
+            "species": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "GenomeBuildValue",
+         "type": "object"
+      },
       "GenomeFeature": {
          "additionalProperties": false,
          "description": "A feature localized to an interval along a genome",
@@ -76,11 +94,68 @@
          "title": "GenomeFeatureAttributeSet",
          "type": "object"
       },
+      "GffDocument": {
+         "additionalProperties": false,
+         "description": "Collection of GFF features and metadata",
+         "properties": {
+            "attribute_ontology_URI": {
+               "description": "This directive indicates that the GFF3 uses the ontology of attribute names located at the indicated URI or URL.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "feature_ontology_URI": {
+               "description": "This directive indicates that the GFF3 file uses the ontology of feature types located at the indicated URI or URL.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "features": {
+               "items": {
+                  "$ref": "#/definitions/GenomeFeature"
+               },
+               "type": "array"
+            },
+            "genome_build": {
+               "$ref": "#/definitions/GenomeBuildValue"
+            },
+            "gff_version": {
+               "type": "string"
+            },
+            "sequence_region": {
+               "$ref": "#/definitions/SequenceRegionValue"
+            },
+            "sequences": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "source_ontology_URI": {
+               "description": "This directive indicates that the GFF3 uses the ontology of source names located at the indicated URI or URL.",
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "species": {
+               "type": "string"
+            }
+         },
+         "required": [],
+         "title": "GffDocument",
+         "type": "object"
+      },
       "Seq": {
          "additionalProperties": false,
          "description": "",
          "properties": {
             "ID": {
+               "type": "string"
+            },
+            "has_sequence_string": {
                "type": "string"
             }
          },
@@ -88,6 +163,31 @@
             "ID"
          ],
          "title": "Seq",
+         "type": "object"
+      },
+      "SequenceRegionValue": {
+         "additionalProperties": false,
+         "description": "",
+         "properties": {
+            "end": {
+               "description": "The end of the feature in positive 1-based integer coordinates",
+               "type": "integer"
+            },
+            "seqid": {
+               "description": "The ID of the landmark used to establish the coordinate system for the current feature.",
+               "type": "string"
+            },
+            "start": {
+               "description": "The start of the feature in positive 1-based integer coordinates",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "seqid",
+            "start",
+            "end"
+         ],
+         "title": "SequenceRegionValue",
          "type": "object"
       }
    },

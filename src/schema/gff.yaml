@@ -35,6 +35,8 @@ slots:
       A type from the sequence ontology
       slot_uri: rdf:type
     pattern: "^SO:\\d+"
+    todos:
+      - explore defining an enum for all allowed SO types
   start:
     is_a: gff coordinate
     description: The start of the feature in positive 1-based integer coordinates
@@ -94,10 +96,25 @@ slots:
   Name:
     is_a: gff attribute
     range: string
+  Note:
+    is_a: gff attribute
+    range: string
   Aliases:
     is_a: gff attribute
     range: string
     multivalued: true
+  Dbxref:
+    is_a: gff attribute
+    range: uriorcurie
+    multivalued: true
+    pattern: "^\\S+:\\S+"
+  Is circular:
+    is_a: gff attribute
+    range: boolean
+  Target:
+    is_a: gff attribute
+  Gap:
+    is_a: gff attribute
     
   gff coordinate:
     is_a: gff column
@@ -110,11 +127,93 @@ slots:
   has attributes:
     range: genome feature attribute set
 
+  has metadata:
+    abstract: true
+    range: metadata
+
+  ontology URI:
+    abstract: true
+    is_a: has metadata
+    range: uriorcurie
+    multivalued: true
+    comments:
+      - This directive may appear multiple times to load multiple URIs, in which case they are merged (or raise an exception if merging is not possible).
+
+
+  has sequence string:
+    range: sequence_enum
+      
 classes:
 
+  gff document:
+    description:
+      Collection of GFF features and metadata
+    attributes:
+      gff version:
+        range: string
+        pattern: "^3\\.\\d+\\.\\d+$"
+      feature ontology URI:
+        is_a: ontology URI
+        description: >-
+          This directive indicates that the GFF3 file uses the ontology of feature types located at the indicated URI or URL.
+      attribute ontology URI:
+        is_a: ontology URI
+        description: >-
+          This directive indicates that the GFF3 uses the ontology of attribute names located at the indicated URI or URL.
+      source ontology URI:
+        is_a: ontology URI
+        description: >-
+          This directive indicates that the GFF3 uses the ontology of source names located at the indicated URI or URL.
+      species:
+        is_a: has metadata
+        range: uriorcurie
+        todos:
+          - align with spec
+        exact_mappings:
+          - biolink:in_taxon
+      sequence region:
+        is_a: has metadata
+        range: sequence region value
+      genome build:
+        is_a: has metadata
+        range: genome build value
+      sequences:
+        range: seq
+        multivalued: true
+      features:
+        range: genome feature
+        multivalued: true
+  
   seq:
     slots:
       - ID
+      - has sequence string
+    todos:
+      - should sequence have defline?
+
+  metadata:
+    abstract: true
+    aliases:
+      - pragma
+      - directive
+      
+  sequence region value:
+    is_a: metadata      
+    slots:
+      - seqid
+      - start
+      - end
+
+  genome build value:
+    is_a: metadata      
+    attributes:
+      source:
+        todos:
+          - consider enum
+      name:
+        range: string
+      species:
+        range: string
 
   genome feature attribute set:
     comments:
@@ -147,6 +246,13 @@ types:
       An IRI
 
 enums:
+  phase_enum:
+    description: phase
+    permissible_values:
+      0: zero
+      1: one
+      2: two
+      
   strand_enum:
     description: strand
     permissible_values:
@@ -161,3 +267,12 @@ enums:
         meaning: faldo:BothStrandsPosition
       "?":
         description: Unknown
+        
+  sequence_enum:
+    description: type of sequence
+    permissible_values:
+      "NA":
+        description: nucleic acid
+      "AA":
+        description: amino acid
+    

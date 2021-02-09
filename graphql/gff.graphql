@@ -1,3 +1,10 @@
+type GenomeBuildValue
+  {
+    source: String
+    name: String
+    species: String
+  }
+
 type GenomeFeature
   {
     seqid: String!
@@ -18,9 +25,34 @@ type GenomeFeatureAttributeSet
     ontologyTerm: [ControlledTermType]
   }
 
+type GffDocument
+  {
+    gffVersion: String
+    featureOntologyURI: [Uriorcurie]
+    attributeOntologyURI: [Uriorcurie]
+    sourceOntologyURI: [Uriorcurie]
+    species: Uriorcurie
+    sequenceRegion: SequenceRegionValue
+    genomeBuild: GenomeBuildValue
+    sequences: [Seq]
+    features: [GenomeFeature]
+  }
+
+interface Metadata
+  {
+  }
+
 type Seq
   {
     iD: Uriorcurie!
+    hasSequenceString: SequenceEnum
+  }
+
+type SequenceRegionValue
+  {
+    seqid: String!
+    start: Integer!
+    end: Integer!
   }
 
 

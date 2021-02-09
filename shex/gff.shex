@@ -34,6 +34,17 @@ metatype:Objectidentifier IRI
 
 metatype:Nodeidentifier NONLITERAL
 
+<https://w3id.org/gffGenomeBuildValue> CLOSED {
+    (  $<https://w3id.org/gffGenomeBuildValue_tes> (  &<https://w3id.org/gffMetadata_tes> ;
+          rdf:type [ <https://w3id.org/gffMetadata> ] ? ;
+          <https://w3id.org/gffsource> @metatype:String ? ;
+          <https://w3id.org/gffname> @metatype:String ? ;
+          <https://w3id.org/gffspecies> @metatype:String ?
+       ) ;
+       rdf:type [ <https://w3id.org/gffGenomeBuildValue> ] ?
+    )
+}
+
 <https://w3id.org/gffGenomeFeature> CLOSED {
     (  $<https://w3id.org/gffGenomeFeature_tes> (  <https://w3id.org/gffseqid> @metatype:String ;
           <https://w3id.org/gffsource> @metatype:String ;
@@ -57,9 +68,45 @@ metatype:Nodeidentifier NONLITERAL
     )
 }
 
+<https://w3id.org/gffGffDocument> CLOSED {
+    (  $<https://w3id.org/gffGffDocument_tes> (  <https://w3id.org/gffgff_version> @metatype:String ? ;
+          <https://w3id.org/gfffeature_ontology_URI> @metatype:Uriorcurie * ;
+          <https://w3id.org/gffattribute_ontology_URI> @metatype:Uriorcurie * ;
+          <https://w3id.org/gffsource_ontology_URI> @metatype:Uriorcurie * ;
+          <https://w3id.org/gffspecies> @metatype:Uriorcurie ? ;
+          <https://w3id.org/gffsequence_region> @<https://w3id.org/gffSequenceRegionValue> ? ;
+          <https://w3id.org/gffgenome_build> @<https://w3id.org/gffGenomeBuildValue> ? ;
+          <https://w3id.org/gffsequences> @<https://w3id.org/gffSeq> * ;
+          <https://w3id.org/gfffeatures> @<https://w3id.org/gffGenomeFeature> *
+       ) ;
+       rdf:type [ <https://w3id.org/gffGffDocument> ] ?
+    )
+}
+
+<https://w3id.org/gffMetadata>  (
+    @<https://w3id.org/gffGenomeBuildValue> OR @<https://w3id.org/gffSequenceRegionValue>
+)
+
+<https://w3id.org/gffMetadata_struct> {
+    (  $<https://w3id.org/gffMetadata_tes> rdf:type . * ;
+       rdf:type [ <https://w3id.org/gffMetadata> ] ?
+    )
+}
+
 <https://w3id.org/gffSeq> CLOSED {
-    (  $<https://w3id.org/gffSeq_tes> rdf:type . * ;
+    (  $<https://w3id.org/gffSeq_tes> <https://w3id.org/gffhas_sequence_string> @<https://w3id.org/gffSequenceEnum> ? ;
        rdf:type [ <https://w3id.org/gffSeq> ]
+    )
+}
+
+<https://w3id.org/gffSequenceRegionValue> CLOSED {
+    (  $<https://w3id.org/gffSequenceRegionValue_tes> (  &<https://w3id.org/gffMetadata_tes> ;
+          rdf:type [ <https://w3id.org/gffMetadata> ] ? ;
+          <https://w3id.org/gffseqid> @metatype:String ;
+          <https://w3id.org/gffstart> @metatype:Integer ;
+          <https://w3id.org/gffend> @metatype:Integer
+       ) ;
+       rdf:type [ <https://w3id.org/gffSequenceRegionValue> ] ?
     )
 }
 

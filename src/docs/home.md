@@ -43,16 +43,22 @@ We first define a UML-like abstract data model. We can then have as many seriali
 
 The specification of how to map the data model to the TSV becomes a separate (simpler) problem, distinct from specifying the data model itself.
 
-It could be argued this is overkill 
+It could be argued this is overkill. GFF3 is designed to be simple,
+it's tight coupling to a TSV representation is arguably a feature,
+forcing a simplicity. Yet as it is crucial to multiple projects this
+arguably is a limitation.
+
+Minimally this project provides clear *data dictionary* of all attributes used in SO, plus computable constraints on each
 
 ## Similar Work
 
  * GFFO
  * FALDO
+ * AgBio specs
 
 ## Status: PROOF OF CONCEPT
 
-This is currently the work of a 15 minute linkml demo session on a BBOP hangout. Much more needs to be done
+This is currently the work of a 15 minute linkml demo session on a BBOP hangout. Much more needs to be done!!!
 
 
 ## Repository
