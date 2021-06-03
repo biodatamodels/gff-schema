@@ -4,7 +4,7 @@
    "definitions": {
       "GenomeBuildValue": {
          "additionalProperties": false,
-         "description": "",
+         "description": "Used for genome-build pragmas",
          "properties": {
             "name": {
                "type": "string"
@@ -33,7 +33,7 @@
             },
             "phase": {
                "description": "The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.",
-               "type": "integer"
+               "type": "string"
             },
             "seqid": {
                "description": "The ID of the landmark used to establish the coordinate system for the current feature.",
@@ -67,7 +67,7 @@
       },
       "GenomeFeatureAttributeSet": {
          "additionalProperties": false,
-         "description": "",
+         "description": "Holds a collection of attributes that can be used by a feature",
          "properties": {
             "ID": {
                "type": "string"
@@ -150,7 +150,7 @@
       },
       "Seq": {
          "additionalProperties": false,
-         "description": "",
+         "description": "A biological sequence",
          "properties": {
             "ID": {
                "type": "string"
@@ -166,6 +166,31 @@
          "type": "object"
       },
       "SequenceRegionValue": {
+         "additionalProperties": false,
+         "description": "Used for sequence-region pragmas",
+         "properties": {
+            "end": {
+               "description": "The end of the feature in positive 1-based integer coordinates",
+               "type": "integer"
+            },
+            "seqid": {
+               "description": "The ID of the landmark used to establish the coordinate system for the current feature.",
+               "type": "string"
+            },
+            "start": {
+               "description": "The start of the feature in positive 1-based integer coordinates",
+               "type": "integer"
+            }
+         },
+         "required": [
+            "seqid",
+            "start",
+            "end"
+         ],
+         "title": "SequenceRegionValue",
+         "type": "object"
+      },
+      "TargetLocation": {
          "additionalProperties": false,
          "description": "",
          "properties": {
@@ -187,7 +212,7 @@
             "start",
             "end"
          ],
-         "title": "SequenceRegionValue",
+         "title": "TargetLocation",
          "type": "object"
       }
    },

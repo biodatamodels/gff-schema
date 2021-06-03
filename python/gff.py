@@ -1,5 +1,5 @@
 # Auto generated from gff.yaml by pythongen.py version: 0.9.0
-# Generation date: 2021-02-08 18:39
+# Generation date: 2021-02-08 18:48
 # Schema: GFF
 #
 # id: https://w3id.org/gff
@@ -48,6 +48,13 @@ class ControlledTermType(Uriorcurie):
     type_class_curie = "xsd:anyURI"
     type_name = "controlled term type"
     type_model_uri = GFF.ControlledTermType
+
+
+class GapString(String):
+    type_class_uri = XSD.string
+    type_class_curie = "xsd:string"
+    type_name = "gap string"
+    type_model_uri = GFF.GapString
 
 
 # Class references
@@ -129,6 +136,9 @@ class GffDocument(YAMLRoot):
 
 @dataclass
 class Seq(YAMLRoot):
+    """
+    A biological sequence
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = GFF.Seq
@@ -152,6 +162,9 @@ class Seq(YAMLRoot):
 
 
 class Metadata(YAMLRoot):
+    """
+    A piece of metadata for a GFF document
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = GFF.Metadata
@@ -162,6 +175,9 @@ class Metadata(YAMLRoot):
 
 @dataclass
 class SequenceRegionValue(Metadata):
+    """
+    Used for sequence-region pragmas
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = GFF.SequenceRegionValue
@@ -169,15 +185,15 @@ class SequenceRegionValue(Metadata):
     class_name: ClassVar[str] = "sequence region value"
     class_model_uri: ClassVar[URIRef] = GFF.SequenceRegionValue
 
-    seqid: str = None
+    seqid: Union[str, SeqID] = None
     start: int = None
     end: int = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.seqid is None:
             raise ValueError("seqid must be supplied")
-        if not isinstance(self.seqid, str):
-            self.seqid = str(self.seqid)
+        if not isinstance(self.seqid, SeqID):
+            self.seqid = SeqID(self.seqid)
 
         if self.start is None:
             raise ValueError("start must be supplied")
@@ -194,6 +210,9 @@ class SequenceRegionValue(Metadata):
 
 @dataclass
 class GenomeBuildValue(Metadata):
+    """
+    Used for genome-build pragmas
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = GFF.GenomeBuildValue
@@ -220,6 +239,9 @@ class GenomeBuildValue(Metadata):
 
 @dataclass
 class GenomeFeatureAttributeSet(YAMLRoot):
+    """
+    Holds a collection of attributes that can be used by a feature
+    """
     _inherited_slots: ClassVar[List[str]] = []
 
     class_class_uri: ClassVar[URIRef] = GFF.GenomeFeatureAttributeSet
@@ -268,20 +290,20 @@ class GenomeFeature(YAMLRoot):
     class_name: ClassVar[str] = "genome feature"
     class_model_uri: ClassVar[URIRef] = GFF.GenomeFeature
 
-    seqid: str = None
+    seqid: Union[str, SeqID] = None
     source: str = None
     start: int = None
     end: int = None
     type: Optional[Union[str, ControlledTermType]] = None
     strand: Optional[Union[str, "StrandEnum"]] = None
-    phase: Optional[int] = None
+    phase: Optional[Union[str, "PhaseEnum"]] = None
     has_attributes: Optional[Union[str, GenomeFeatureAttributeSetID]] = None
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
         if self.seqid is None:
             raise ValueError("seqid must be supplied")
-        if not isinstance(self.seqid, str):
-            self.seqid = str(self.seqid)
+        if not isinstance(self.seqid, SeqID):
+            self.seqid = SeqID(self.seqid)
 
         if self.source is None:
             raise ValueError("source must be supplied")
@@ -304,11 +326,43 @@ class GenomeFeature(YAMLRoot):
         if self.strand is not None and not isinstance(self.strand, StrandEnum):
             self.strand = StrandEnum(self.strand)
 
-        if self.phase is not None and not isinstance(self.phase, int):
-            self.phase = int(self.phase)
+        if self.phase is not None and not isinstance(self.phase, PhaseEnum):
+            self.phase = PhaseEnum(self.phase)
 
         if self.has_attributes is not None and not isinstance(self.has_attributes, GenomeFeatureAttributeSetID):
             self.has_attributes = GenomeFeatureAttributeSetID(self.has_attributes)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass
+class TargetLocation(YAMLRoot):
+    _inherited_slots: ClassVar[List[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = GFF.TargetLocation
+    class_class_curie: ClassVar[str] = "gff:TargetLocation"
+    class_name: ClassVar[str] = "target location"
+    class_model_uri: ClassVar[URIRef] = GFF.TargetLocation
+
+    seqid: Union[str, SeqID] = None
+    start: int = None
+    end: int = None
+
+    def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
+        if self.seqid is None:
+            raise ValueError("seqid must be supplied")
+        if not isinstance(self.seqid, SeqID):
+            self.seqid = SeqID(self.seqid)
+
+        if self.start is None:
+            raise ValueError("start must be supplied")
+        if not isinstance(self.start, int):
+            self.start = int(self.start)
+
+        if self.end is None:
+            raise ValueError("end must be supplied")
+        if not isinstance(self.end, int):
+            self.end = int(self.end)
 
         super().__post_init__(**kwargs)
 
@@ -387,7 +441,7 @@ slots.gff_column = Slot(uri=GFF.gff_column, name="gff column", curie=GFF.curie('
                    model_uri=GFF.gff_column, domain=None, range=Optional[str])
 
 slots.seqid = Slot(uri=GFF.seqid, name="seqid", curie=GFF.curie('seqid'),
-                   model_uri=GFF.seqid, domain=None, range=str)
+                   model_uri=GFF.seqid, domain=None, range=Union[str, SeqID])
 
 slots.source = Slot(uri=GFF.source, name="source", curie=GFF.curie('source'),
                    model_uri=GFF.source, domain=None, range=str)
@@ -409,7 +463,7 @@ slots.score = Slot(uri=GFF.score, name="score", curie=GFF.curie('score'),
                    model_uri=GFF.score, domain=None, range=Optional[float])
 
 slots.phase = Slot(uri=GFF.phase, name="phase", curie=GFF.curie('phase'),
-                   model_uri=GFF.phase, domain=None, range=Optional[int])
+                   model_uri=GFF.phase, domain=None, range=Optional[Union[str, "PhaseEnum"]])
 
 slots.Ontology_term = Slot(uri=GFF.Ontology_term, name="Ontology term", curie=GFF.curie('Ontology_term'),
                    model_uri=GFF.Ontology_term, domain=None, range=Optional[Union[Union[str, ControlledTermType], List[Union[str, ControlledTermType]]]])
@@ -440,10 +494,10 @@ slots.Is_circular = Slot(uri=GFF.Is_circular, name="Is circular", curie=GFF.curi
                    model_uri=GFF.Is_circular, domain=None, range=Optional[Union[bool, Bool]])
 
 slots.Target = Slot(uri=GFF.Target, name="Target", curie=GFF.curie('Target'),
-                   model_uri=GFF.Target, domain=None, range=Optional[str])
+                   model_uri=GFF.Target, domain=None, range=Optional[Union[dict, TargetLocation]])
 
 slots.Gap = Slot(uri=GFF.Gap, name="Gap", curie=GFF.curie('Gap'),
-                   model_uri=GFF.Gap, domain=None, range=Optional[str])
+                   model_uri=GFF.Gap, domain=None, range=Optional[Union[str, GapString]])
 
 slots.gff_coordinate = Slot(uri=GFF.gff_coordinate, name="gff coordinate", curie=GFF.curie('gff_coordinate'),
                    model_uri=GFF.gff_coordinate, domain=None, range=Optional[int])

@@ -21,7 +21,7 @@ slots:
   seqid:
     is_a: gff column
     description: The ID of the landmark used to establish the coordinate system for the current feature.
-    range: string ## make this an object
+    range: seq
     required: true
   source:
     is_a: gff column
@@ -68,9 +68,7 @@ slots:
       The score of the feature, a floating point number. As in earlier versions of the format, the semantics of the score are ill-defined. It is strongly recommended that E-values be used for sequence similarity features, and that P-values be used for ab initio gene prediction features.
     range: float
   phase:
-    range: integer
-    minimum_value: 0
-    maximum_value: 0
+    range: phase_enum
     description: >-
       The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2.
     exact_mappings:
@@ -113,8 +111,11 @@ slots:
     range: boolean
   Target:
     is_a: gff attribute
+    string_serialization: "{seqid} {start} {end}"
+    range: target location
   Gap:
     is_a: gff attribute
+    range: gap string
     
   gff coordinate:
     is_a: gff column
@@ -185,6 +186,8 @@ classes:
         multivalued: true
   
   seq:
+    description: >-
+      A biological sequence    
     slots:
       - ID
       - has sequence string
@@ -193,12 +196,16 @@ classes:
 
   metadata:
     abstract: true
+    description: >-
+      A piece of metadata for a GFF document
     aliases:
       - pragma
       - directive
       
   sequence region value:
     is_a: metadata      
+    description: >-
+      Used for sequence-region pragmas
     slots:
       - seqid
       - start
@@ -206,6 +213,8 @@ classes:
 
   genome build value:
     is_a: metadata      
+    description: >-
+      Used for genome-build pragmas
     attributes:
       source:
         todos:
@@ -216,6 +225,8 @@ classes:
         range: string
 
   genome feature attribute set:
+    description: >-
+      Holds a collection of attributes that can be used by a feature
     comments:
       - an equally valid decision decision is to fold this directly into the genome feature class
     slots:
@@ -239,11 +250,22 @@ classes:
       - phase
       - has attributes
 
+  target location:
+    slots:
+      - seqid
+      - start
+      - end
+  
+
 types:
   controlled term type:
     typeof: uriorcurie
     description: >-
       An IRI
+  gap string:
+    typeof: string
+    todos:
+      - model this explicitly
 
 enums:
   phase_enum:

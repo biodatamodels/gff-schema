@@ -6,6 +6,8 @@ PREFIX metatype: <https://w3id.org/biolink/biolinkml/meta/types/>
 
 <https://w3id.org/gffControlledTermType> IRI
 
+<https://w3id.org/gffGapString> xsd:string
+
 metatype:String xsd:string
 
 metatype:Integer xsd:integer
@@ -46,13 +48,13 @@ metatype:Nodeidentifier NONLITERAL
 }
 
 <https://w3id.org/gffGenomeFeature> CLOSED {
-    (  $<https://w3id.org/gffGenomeFeature_tes> (  <https://w3id.org/gffseqid> @metatype:String ;
+    (  $<https://w3id.org/gffGenomeFeature_tes> (  <https://w3id.org/gffseqid> @<https://w3id.org/gffSeq> ;
           <https://w3id.org/gffsource> @metatype:String ;
           <https://w3id.org/gfftype> @<https://w3id.org/gffControlledTermType> ? ;
           <https://w3id.org/gffstrand> @<https://w3id.org/gffStrandEnum> ? ;
           <https://w3id.org/gffstart> @metatype:Integer ;
           <https://w3id.org/gffend> @metatype:Integer ;
-          <https://w3id.org/gffphase> @metatype:Integer ? ;
+          <https://w3id.org/gffphase> @<https://w3id.org/gffPhaseEnum> ? ;
           <https://w3id.org/gffhas_attributes> @<https://w3id.org/gffGenomeFeatureAttributeSet> ?
        ) ;
        rdf:type [ <https://w3id.org/gffGenomeFeature> ] ?
@@ -102,11 +104,20 @@ metatype:Nodeidentifier NONLITERAL
 <https://w3id.org/gffSequenceRegionValue> CLOSED {
     (  $<https://w3id.org/gffSequenceRegionValue_tes> (  &<https://w3id.org/gffMetadata_tes> ;
           rdf:type [ <https://w3id.org/gffMetadata> ] ? ;
-          <https://w3id.org/gffseqid> @metatype:String ;
+          <https://w3id.org/gffseqid> @<https://w3id.org/gffSeq> ;
           <https://w3id.org/gffstart> @metatype:Integer ;
           <https://w3id.org/gffend> @metatype:Integer
        ) ;
        rdf:type [ <https://w3id.org/gffSequenceRegionValue> ] ?
+    )
+}
+
+<https://w3id.org/gffTargetLocation> CLOSED {
+    (  $<https://w3id.org/gffTargetLocation_tes> (  <https://w3id.org/gffseqid> @<https://w3id.org/gffSeq> ;
+          <https://w3id.org/gffstart> @metatype:Integer ;
+          <https://w3id.org/gffend> @metatype:Integer
+       ) ;
+       rdf:type [ <https://w3id.org/gffTargetLocation> ] ?
     )
 }
 

@@ -166,11 +166,11 @@ meta:gffDocument__species a owl:ObjectProperty,
     rdfs:label "GFF" ;
     dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
     skos:definition "Playing around with GFF spec" ;
-    meta:generation_date "2021-02-08 18:39" ;
+    meta:generation_date "2021-02-08 18:48" ;
     meta:metamodel_version "1.7.0" ;
     meta:source_file "gff.yaml" ;
-    meta:source_file_date "Mon Feb  8 18:39:25 2021" ;
-    meta:source_file_size 7244 .
+    meta:source_file_date "Mon Feb  8 18:48:11 2021" ;
+    meta:source_file_size 7747 .
 
 <https://w3id.org/gffAliases> a owl:ObjectProperty,
         meta:SlotDefinition ;
@@ -193,15 +193,19 @@ meta:gffDocument__species a owl:ObjectProperty,
 <https://w3id.org/gffGap> a owl:ObjectProperty,
         meta:SlotDefinition ;
     rdfs:label "Gap" ;
-    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:range <https://w3id.org/gffGapString> ;
     rdfs:subPropertyOf <https://w3id.org/gffgff_attribute> .
 
 <https://w3id.org/gffGffDocument> a owl:Class,
         meta:ClassDefinition ;
     rdfs:label "gff document" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/gffSeq> ;
-            owl:onProperty meta:sequences ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/gffGenomeBuildValue> ;
+            owl:onProperty meta:genome_build ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/biolink/biolinkml/meta/types/Uriorcurie> ;
+            owl:onProperty meta:source_ontology_URI ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/biolink/biolinkml/meta/types/Uriorcurie> ;
             owl:onProperty meta:attribute_ontology_URI ],
@@ -209,27 +213,23 @@ meta:gffDocument__species a owl:ObjectProperty,
             owl:allValuesFrom <https://w3id.org/biolink/biolinkml/meta/types/Uriorcurie> ;
             owl:onProperty meta:feature_ontology_URI ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/biolink/biolinkml/meta/types/Uriorcurie> ;
-            owl:onProperty meta:source_ontology_URI ],
-        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
             owl:onProperty meta:gff_version ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/gffGenomeBuildValue> ;
-            owl:onProperty meta:genome_build ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/gffGenomeFeature> ;
-            owl:onProperty meta:features ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/gffSequenceRegionValue> ;
             owl:onProperty meta:sequence_region ],
         [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/gffSeq> ;
+            owl:onProperty meta:sequences ],
+        [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/Uriorcurie> ;
-            owl:onProperty meta:species ] ;
+            owl:onProperty meta:species ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom <https://w3id.org/gffGenomeFeature> ;
+            owl:onProperty meta:features ] ;
     skos:definition "Collection of GFF features and metadata" .
 
 <https://w3id.org/gffIs_circular> a owl:ObjectProperty,
@@ -247,7 +247,7 @@ meta:gffDocument__species a owl:ObjectProperty,
 <https://w3id.org/gffTarget> a owl:ObjectProperty,
         meta:SlotDefinition ;
     rdfs:label "Target" ;
-    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+    rdfs:range <https://w3id.org/gffTargetLocation> ;
     rdfs:subPropertyOf <https://w3id.org/gffgff_attribute> .
 
 <https://w3id.org/gffscore> a owl:ObjectProperty,
@@ -274,6 +274,11 @@ meta:gffDocument__species a owl:ObjectProperty,
             owl:qualifiedCardinality 1 ] ;
     skos:definition "A real number that conforms to the xsd:float specification" .
 
+<https://w3id.org/gffGapString> a owl:Class,
+        meta:TypeDefinition ;
+    rdfs:label "gap string" ;
+    rdfs:subClassOf <https://w3id.org/biolink/biolinkml/meta/types/String> .
+
 <https://w3id.org/gffName> a owl:ObjectProperty,
         meta:SlotDefinition ;
     rdfs:label "Name" ;
@@ -292,6 +297,22 @@ meta:gffDocument__species a owl:ObjectProperty,
     rdfs:range <https://w3id.org/gffGenomeFeature> ;
     rdfs:subPropertyOf <https://w3id.org/gffgff_attribute> .
 
+<https://w3id.org/gffTargetLocation> a owl:Class,
+        meta:ClassDefinition ;
+    rdfs:label "target location" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/gffSeq> ;
+            owl:onProperty <https://w3id.org/gffseqid> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/Integer> ;
+            owl:onProperty <https://w3id.org/gffstart> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/Integer> ;
+            owl:onProperty <https://w3id.org/gffend> ;
+            owl:qualifiedCardinality 1 ] .
+
 <https://w3id.org/gffhas_attributes> a owl:ObjectProperty,
         meta:SlotDefinition ;
     rdfs:label "has attributes" ;
@@ -305,7 +326,7 @@ meta:gffDocument__species a owl:ObjectProperty,
 <https://w3id.org/gffphase> a owl:ObjectProperty,
         meta:SlotDefinition ;
     rdfs:label "phase" ;
-    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/Integer> ;
+    rdfs:range <http://UNKNOWN.org/phase_enum> ;
     skos:definition "The phase for a coding sequence entity. For example, phase of a CDS as represented in a GFF3 with a value of 0, 1 or 2." .
 
 <https://w3id.org/gffstrand> a owl:ObjectProperty,
@@ -336,7 +357,8 @@ meta:gffDocument__species a owl:ObjectProperty,
             owl:maxQualifiedCardinality 1 ;
             owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
             owl:onProperty meta:name ],
-        <https://w3id.org/gffMetadata> .
+        <https://w3id.org/gffMetadata> ;
+    skos:definition "Used for genome-build pragmas" .
 
 <https://w3id.org/gffGenomeFeatureAttributeSet> a owl:Class,
         meta:ClassDefinition ;
@@ -346,15 +368,16 @@ meta:gffDocument__species a owl:ObjectProperty,
             owl:onProperty <https://w3id.org/gffID> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:allValuesFrom <https://w3id.org/gffControlledTermType> ;
-            owl:onProperty <https://w3id.org/gffOntology_term> ],
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onProperty <https://w3id.org/gffName> ],
         [ a owl:Restriction ;
             owl:allValuesFrom <https://w3id.org/gffGenomeFeature> ;
             owl:onProperty <https://w3id.org/gffParent> ],
         [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
-            owl:onProperty <https://w3id.org/gffName> ] ;
+            owl:allValuesFrom <https://w3id.org/gffControlledTermType> ;
+            owl:onProperty <https://w3id.org/gffOntology_term> ] ;
+    skos:definition "Holds a collection of attributes that can be used by a feature" ;
     skos:note "an equally valid decision decision is to fold this directly into the genome feature class" .
 
 <https://w3id.org/gffID> a owl:ObjectProperty,
@@ -362,18 +385,6 @@ meta:gffDocument__species a owl:ObjectProperty,
     rdfs:label "ID" ;
     rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/Uriorcurie> ;
     rdfs:subPropertyOf <https://w3id.org/gffgff_attribute> .
-
-<https://w3id.org/gffSeq> a owl:Class,
-        meta:ClassDefinition ;
-    rdfs:label "seq" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/Uriorcurie> ;
-            owl:onProperty <https://w3id.org/gffID> ;
-            owl:qualifiedCardinality 1 ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <http://UNKNOWN.org/sequence_enum> ;
-            owl:onProperty <https://w3id.org/gffhas_sequence_string> ] .
 
 <https://w3id.org/gffSequenceRegionValue> a owl:Class,
         meta:ClassDefinition ;
@@ -387,18 +398,11 @@ meta:gffDocument__species a owl:ObjectProperty,
             owl:onProperty <https://w3id.org/gffstart> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:onClass <https://w3id.org/gffSeq> ;
             owl:onProperty <https://w3id.org/gffseqid> ;
             owl:qualifiedCardinality 1 ],
-        <https://w3id.org/gffMetadata> .
-
-<https://w3id.org/gffend> a owl:ObjectProperty,
-        meta:SlotDefinition ;
-    rdfs:label "end" ;
-    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/Integer> ;
-    rdfs:subPropertyOf <https://w3id.org/gffgff_coordinate> ;
-    skos:definition "The end of the feature in positive 1-based integer coordinates" ;
-    skos:note "- \"constraint: end > start\" - \"For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature.\"" .
+        <https://w3id.org/gffMetadata> ;
+    skos:definition "Used for sequence-region pragmas" .
 
 <https://w3id.org/gffgff_coordinate> a owl:ObjectProperty,
         meta:SlotDefinition ;
@@ -408,13 +412,6 @@ meta:gffDocument__species a owl:ObjectProperty,
     skos:definition "A positive 1-based integer coordinate indicating start or end" ;
     skos:note "For features that cross the origin of a circular feature (e.g. most bacterial genomes, plasmids, and some viral genomes), the requirement for start to be less than or equal to end is satisfied by making end = the position of the end + the length of the landmark feature." .
 
-<https://w3id.org/gffseqid> a owl:ObjectProperty,
-        meta:SlotDefinition ;
-    rdfs:label "seqid" ;
-    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/String> ;
-    rdfs:subPropertyOf <https://w3id.org/gffgff_column> ;
-    skos:definition "The ID of the landmark used to establish the coordinate system for the current feature." .
-
 <https://w3id.org/gffsource> a owl:ObjectProperty,
         meta:SlotDefinition ;
     rdfs:label "source" ;
@@ -422,18 +419,20 @@ meta:gffDocument__species a owl:ObjectProperty,
     rdfs:subPropertyOf <https://w3id.org/gffgff_column> ;
     skos:definition "The source is a free text qualifier intended to describe the algorithm or operating procedure that generated this feature." .
 
-<https://w3id.org/gffstart> a owl:ObjectProperty,
-        meta:SlotDefinition ;
-    rdfs:label "start" ;
-    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/Integer> ;
-    rdfs:subPropertyOf <https://w3id.org/gffgff_coordinate> ;
-    skos:definition "The start of the feature in positive 1-based integer coordinates" .
-
 <https://w3id.org/gffMetadata> a owl:Class,
         meta:ClassDefinition ;
     rdfs:label "metadata" ;
     skos:altLabel "directive",
-        "pragma" .
+        "pragma" ;
+    skos:definition "A piece of metadata for a GFF document" .
+
+<https://w3id.org/gffend> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "end" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/Integer> ;
+    rdfs:subPropertyOf <https://w3id.org/gffgff_coordinate> ;
+    skos:definition "The end of the feature in positive 1-based integer coordinates" ;
+    skos:note "- \"constraint: end > start\" - \"For features that cross the origin of a circular feature,  end = the position of the end + the length of the landmark feature.\"" .
 
 <https://w3id.org/gffontology_URI> a owl:ObjectProperty,
         meta:SlotDefinition ;
@@ -441,6 +440,20 @@ meta:gffDocument__species a owl:ObjectProperty,
     rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/Uriorcurie> ;
     rdfs:subPropertyOf <https://w3id.org/gffhas_metadata> ;
     skos:note "This directive may appear multiple times to load multiple URIs, in which case they are merged (or raise an exception if merging is not possible)." .
+
+<https://w3id.org/gffseqid> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "seqid" ;
+    rdfs:range <https://w3id.org/gffSeq> ;
+    rdfs:subPropertyOf <https://w3id.org/gffgff_column> ;
+    skos:definition "The ID of the landmark used to establish the coordinate system for the current feature." .
+
+<https://w3id.org/gffstart> a owl:ObjectProperty,
+        meta:SlotDefinition ;
+    rdfs:label "start" ;
+    rdfs:range <https://w3id.org/biolink/biolinkml/meta/types/Integer> ;
+    rdfs:subPropertyOf <https://w3id.org/gffgff_coordinate> ;
+    skos:definition "The start of the feature in positive 1-based integer coordinates" .
 
 <https://w3id.org/gffControlledTermType> a owl:Class,
         meta:TypeDefinition ;
@@ -464,12 +477,8 @@ meta:gffDocument__species a owl:ObjectProperty,
     rdfs:seeAlso "https://github.com/The-Sequence-Ontology/Specifications/blob/master/gff3.md" ;
     rdfs:subClassOf [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/gffControlledTermType> ;
-            owl:onProperty <https://w3id.org/gfftype> ],
-        [ a owl:Restriction ;
-            owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/Integer> ;
-            owl:onProperty <https://w3id.org/gffphase> ],
+            owl:onClass <https://w3id.org/gffGenomeFeatureAttributeSet> ;
+            owl:onProperty <https://w3id.org/gffhas_attributes> ],
         [ a owl:Restriction ;
             owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/Integer> ;
             owl:onProperty <https://w3id.org/gffend> ;
@@ -484,10 +493,14 @@ meta:gffDocument__species a owl:ObjectProperty,
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
             owl:maxQualifiedCardinality 1 ;
-            owl:onClass <https://w3id.org/gffGenomeFeatureAttributeSet> ;
-            owl:onProperty <https://w3id.org/gffhas_attributes> ],
+            owl:onClass <https://w3id.org/gffControlledTermType> ;
+            owl:onProperty <https://w3id.org/gfftype> ],
         [ a owl:Restriction ;
-            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/String> ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <http://UNKNOWN.org/phase_enum> ;
+            owl:onProperty <https://w3id.org/gffphase> ],
+        [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/gffSeq> ;
             owl:onProperty <https://w3id.org/gffseqid> ;
             owl:qualifiedCardinality 1 ],
         [ a owl:Restriction ;
@@ -495,6 +508,19 @@ meta:gffDocument__species a owl:ObjectProperty,
             owl:onProperty <https://w3id.org/gffstart> ;
             owl:qualifiedCardinality 1 ] ;
     skos:definition "A feature localized to an interval along a genome" .
+
+<https://w3id.org/gffSeq> a owl:Class,
+        meta:ClassDefinition ;
+    rdfs:label "seq" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://w3id.org/biolink/biolinkml/meta/types/Uriorcurie> ;
+            owl:onProperty <https://w3id.org/gffID> ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <http://UNKNOWN.org/sequence_enum> ;
+            owl:onProperty <https://w3id.org/gffhas_sequence_string> ] ;
+    skos:definition "A biological sequence    " .
 
 meta:ClassDefinition a owl:Class ;
     rdfs:label "class_definition" ;
