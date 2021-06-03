@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="None">
   
-  
+  <link rel="canonical" href="https://biodatamodels.github.io/gff-schema/">
   <link rel="shortcut icon" href="img/favicon.ico">
   <title>GFF Schema (DRAFT, pre-alpha)</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
@@ -20,7 +20,7 @@
     // Current page data
     var mkdocs_page_name = "Index";
     var mkdocs_page_input_path = "index.md";
-    var mkdocs_page_url = null;
+    var mkdocs_page_url = "/gff-schema/";
   </script>
   
   <script src="js/jquery-2.1.1.min.js" defer></script>
@@ -99,6 +99,9 @@
     <li>Index</li>
     <li class="wy-breadcrumbs-aside">
       
+        <a href="https://github.com/biodatamodels/gff-schema/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
     </li>
   </ul>
   
@@ -143,9 +146,11 @@
 </ul>
 </li>
 <li><a href="gff_column/">gff column</a><ul>
-<li><a href="gff_coordinate/">gff coordinate</a> - A positive 1-based integer coordinate indicating start or end</li>
+<li><a href="gff_coordinate/">gff coordinate</a> - A positive 1-based integer coordinate indicating start or end<ul>
 <li><a href="end/">end</a> - The end of the feature in positive 1-based integer coordinates</li>
 <li><a href="start/">start</a> - The start of the feature in positive 1-based integer coordinates</li>
+</ul>
+</li>
 <li><a href="seqid/">seqid</a> - The ID of the landmark used to establish the coordinate system for the current feature.</li>
 <li><a href="source/">source</a> - The source is a free text qualifier intended to describe the algorithm or operating procedure that generated this feature.</li>
 <li><a href="type/">type</a> - A type from the sequence ontology slot_uri: rdf:type</li>
@@ -159,10 +164,12 @@
 <li><a href="gffDocument__genome_build/">➞genome build</a></li>
 <li><a href="gffDocument__sequence_region/">➞sequence region</a></li>
 <li><a href="gffDocument__species/">➞species</a></li>
-<li><a href="ontology_URI/">ontology URI</a></li>
+<li><a href="ontology_URI/">ontology URI</a><ul>
 <li><a href="gffDocument__attribute_ontology_URI/">➞attribute ontology URI</a> - This directive indicates that the GFF3 uses the ontology of attribute names located at the indicated URI or URL.</li>
 <li><a href="gffDocument__feature_ontology_URI/">➞feature ontology URI</a> - This directive indicates that the GFF3 file uses the ontology of feature types located at the indicated URI or URL.</li>
 <li><a href="gffDocument__source_ontology_URI/">➞source ontology URI</a> - This directive indicates that the GFF3 uses the ontology of source names located at the indicated URI or URL.</li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="has_sequence_string/">has sequence string</a></li>
@@ -241,6 +248,8 @@
   <div class="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
       
+          <a href="https://github.com/biodatamodels/gff-schema/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
       
         <span><a href="home/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
@@ -263,5 +272,5 @@
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2021-02-09 02:48:38.961296+00:00
+Build Date UTC : 2021-06-03 01:33:13.986650+00:00
 -->
