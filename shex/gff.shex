@@ -1,123 +1,127 @@
-BASE <https://w3id.org/gff/>
+BASE <https://w3id.org/biodatamodels/gff/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX metatype: <https://w3id.org/biolink/biolinkml/meta/types/>
+PREFIX linkml: <https://w3id.org/linkml/>
 
 
-<https://w3id.org/gffControlledTermType> IRI
+<https://w3id.org/biodatamodels/gffControlledTermType> IRI
 
-<https://w3id.org/gffGapString> xsd:string
+<https://w3id.org/biodatamodels/gffGapString> xsd:string
 
-metatype:String xsd:string
+linkml:String xsd:string
 
-metatype:Integer xsd:integer
+linkml:Integer xsd:integer
 
-metatype:Boolean xsd:boolean
+linkml:Boolean xsd:boolean
 
-metatype:Float xsd:float
+linkml:Float xsd:float
 
-metatype:Double xsd:double
+linkml:Double xsd:double
 
-metatype:Decimal xsd:decimal
+linkml:Decimal xsd:decimal
 
-metatype:Time xsd:dateTime
+linkml:Time xsd:dateTime
 
-metatype:Date xsd:date
+linkml:Date xsd:date
 
-metatype:Datetime xsd:dateTime
+linkml:Datetime xsd:dateTime
 
-metatype:Uriorcurie IRI
+linkml:Uriorcurie IRI
 
-metatype:Uri IRI
+linkml:Uri IRI
 
-metatype:Ncname xsd:string
+linkml:Ncname xsd:string
 
-metatype:Objectidentifier IRI
+linkml:Objectidentifier IRI
 
-metatype:Nodeidentifier NONLITERAL
+linkml:Nodeidentifier NONLITERAL
 
-<https://w3id.org/gffGenomeBuildValue> CLOSED {
-    (  $<https://w3id.org/gffGenomeBuildValue_tes> (  &<https://w3id.org/gffMetadata_tes> ;
-          rdf:type [ <https://w3id.org/gffMetadata> ] ? ;
-          <https://w3id.org/gffsource> @metatype:String ? ;
-          <https://w3id.org/gffname> @metatype:String ? ;
-          <https://w3id.org/gffspecies> @metatype:String ?
+<https://w3id.org/biodatamodels/gffGenomeBuildValue> CLOSED {
+    (  $<https://w3id.org/biodatamodels/gffGenomeBuildValue_tes> (  &<https://w3id.org/biodatamodels/gffMetadata_tes> ;
+          rdf:type [ <https://w3id.org/biodatamodels/gffMetadata> ] ? ;
+          <https://w3id.org/biodatamodels/gffsource> @linkml:String ? ;
+          <https://w3id.org/biodatamodels/gffname> @linkml:String ? ;
+          <https://w3id.org/biodatamodels/gffspecies> @linkml:String ?
        ) ;
-       rdf:type [ <https://w3id.org/gffGenomeBuildValue> ] ?
+       rdf:type [ <https://w3id.org/biodatamodels/gffGenomeBuildValue> ] ?
     )
 }
 
-<https://w3id.org/gffGenomeFeature> CLOSED {
-    (  $<https://w3id.org/gffGenomeFeature_tes> (  <https://w3id.org/gffseqid> @<https://w3id.org/gffSeq> ;
-          <https://w3id.org/gffsource> @metatype:String ;
-          <https://w3id.org/gfftype> @<https://w3id.org/gffControlledTermType> ? ;
-          <https://w3id.org/gffstrand> @<https://w3id.org/gffStrandEnum> ? ;
-          <https://w3id.org/gffstart> @metatype:Integer ;
-          <https://w3id.org/gffend> @metatype:Integer ;
-          <https://w3id.org/gffphase> @<https://w3id.org/gffPhaseEnum> ? ;
-          <https://w3id.org/gffhas_attributes> @<https://w3id.org/gffGenomeFeatureAttributeSet> ?
+<https://w3id.org/biodatamodels/gffGenomeFeature> CLOSED {
+    (  $<https://w3id.org/biodatamodels/gffGenomeFeature_tes> (  <https://w3id.org/biodatamodels/gffseqid>
+          @<https://w3id.org/biodatamodels/gffSeq> ;
+          <https://w3id.org/biodatamodels/gffsource> @linkml:String ;
+          <https://w3id.org/biodatamodels/gfftype> @<https://w3id.org/biodatamodels/gffControlledTermType> ? ;
+          <https://w3id.org/biodatamodels/gffstrand> @<https://w3id.org/biodatamodels/gffStrandEnum> ? ;
+          <https://w3id.org/biodatamodels/gffstart> @linkml:Integer ;
+          <https://w3id.org/biodatamodels/gffend> @linkml:Integer ;
+          <https://w3id.org/biodatamodels/gffphase> @<https://w3id.org/biodatamodels/gffPhaseEnum> ? ;
+          <https://w3id.org/biodatamodels/gffhas_attributes> @<https://w3id.org/biodatamodels/gffGenomeFeatureAttributeSet> ?
        ) ;
-       rdf:type [ <https://w3id.org/gffGenomeFeature> ] ?
+       rdf:type [ <https://w3id.org/biodatamodels/gffGenomeFeature> ] ?
     )
 }
 
-<https://w3id.org/gffGenomeFeatureAttributeSet> CLOSED {
-    (  $<https://w3id.org/gffGenomeFeatureAttributeSet_tes> (  <https://w3id.org/gffName> @metatype:String ? ;
-          <https://w3id.org/gffParent> @<https://w3id.org/gffGenomeFeature> * ;
-          <https://w3id.org/gffOntology_term> @<https://w3id.org/gffControlledTermType> *
+<https://w3id.org/biodatamodels/gffGenomeFeatureAttributeSet> CLOSED {
+    (  $<https://w3id.org/biodatamodels/gffGenomeFeatureAttributeSet_tes> (  <https://w3id.org/biodatamodels/gffName>
+          @linkml:String ? ;
+          <https://w3id.org/biodatamodels/gffParent> @<https://w3id.org/biodatamodels/gffGenomeFeature> * ;
+          <https://w3id.org/biodatamodels/gffOntology_term> @<https://w3id.org/biodatamodels/gffControlledTermType> *
        ) ;
-       rdf:type [ <https://w3id.org/gffGenomeFeatureAttributeSet> ]
+       rdf:type [ <https://w3id.org/biodatamodels/gffGenomeFeatureAttributeSet> ]
     )
 }
 
-<https://w3id.org/gffGffDocument> CLOSED {
-    (  $<https://w3id.org/gffGffDocument_tes> (  <https://w3id.org/gffgff_version> @metatype:String ? ;
-          <https://w3id.org/gfffeature_ontology_URI> @metatype:Uriorcurie * ;
-          <https://w3id.org/gffattribute_ontology_URI> @metatype:Uriorcurie * ;
-          <https://w3id.org/gffsource_ontology_URI> @metatype:Uriorcurie * ;
-          <https://w3id.org/gffspecies> @metatype:Uriorcurie ? ;
-          <https://w3id.org/gffsequence_region> @<https://w3id.org/gffSequenceRegionValue> ? ;
-          <https://w3id.org/gffgenome_build> @<https://w3id.org/gffGenomeBuildValue> ? ;
-          <https://w3id.org/gffsequences> @<https://w3id.org/gffSeq> * ;
-          <https://w3id.org/gfffeatures> @<https://w3id.org/gffGenomeFeature> *
+<https://w3id.org/biodatamodels/gffGffDocument> CLOSED {
+    (  $<https://w3id.org/biodatamodels/gffGffDocument_tes> (  <https://w3id.org/biodatamodels/gffgff_version> @linkml:String ? ;
+          <https://w3id.org/biodatamodels/gfffeature_ontology_URI> @linkml:Uriorcurie * ;
+          <https://w3id.org/biodatamodels/gffattribute_ontology_URI> @linkml:Uriorcurie * ;
+          <https://w3id.org/biodatamodels/gffsource_ontology_URI> @linkml:Uriorcurie * ;
+          <https://w3id.org/biodatamodels/gffspecies> @linkml:Uriorcurie ? ;
+          <https://w3id.org/biodatamodels/gffsequence_region> @<https://w3id.org/biodatamodels/gffSequenceRegionValue> ? ;
+          <https://w3id.org/biodatamodels/gffgenome_build> @<https://w3id.org/biodatamodels/gffGenomeBuildValue> ? ;
+          <https://w3id.org/biodatamodels/gffsequences> @<https://w3id.org/biodatamodels/gffSeq> * ;
+          <https://w3id.org/biodatamodels/gfffeatures> @<https://w3id.org/biodatamodels/gffGenomeFeature> *
        ) ;
-       rdf:type [ <https://w3id.org/gffGffDocument> ] ?
+       rdf:type [ <https://w3id.org/biodatamodels/gffGffDocument> ] ?
     )
 }
 
-<https://w3id.org/gffMetadata>  (
-    @<https://w3id.org/gffGenomeBuildValue> OR @<https://w3id.org/gffSequenceRegionValue>
+<https://w3id.org/biodatamodels/gffMetadata>  (
+    @<https://w3id.org/biodatamodels/gffGenomeBuildValue> OR @<https://w3id.org/biodatamodels/gffSequenceRegionValue>
 )
 
-<https://w3id.org/gffMetadata_struct> {
-    (  $<https://w3id.org/gffMetadata_tes> rdf:type . * ;
-       rdf:type [ <https://w3id.org/gffMetadata> ] ?
+<https://w3id.org/biodatamodels/gffMetadata_struct> {
+    (  $<https://w3id.org/biodatamodels/gffMetadata_tes> rdf:type . * ;
+       rdf:type [ <https://w3id.org/biodatamodels/gffMetadata> ] ?
     )
 }
 
-<https://w3id.org/gffSeq> CLOSED {
-    (  $<https://w3id.org/gffSeq_tes> <https://w3id.org/gffhas_sequence_string> @<https://w3id.org/gffSequenceEnum> ? ;
-       rdf:type [ <https://w3id.org/gffSeq> ]
+<https://w3id.org/biodatamodels/gffSeq> CLOSED {
+    (  $<https://w3id.org/biodatamodels/gffSeq_tes> <https://w3id.org/biodatamodels/gffhas_sequence_string>
+       @<https://w3id.org/biodatamodels/gffSequenceEnum> ? ;
+       rdf:type [ <https://w3id.org/biodatamodels/gffSeq> ]
     )
 }
 
-<https://w3id.org/gffSequenceRegionValue> CLOSED {
-    (  $<https://w3id.org/gffSequenceRegionValue_tes> (  &<https://w3id.org/gffMetadata_tes> ;
-          rdf:type [ <https://w3id.org/gffMetadata> ] ? ;
-          <https://w3id.org/gffseqid> @<https://w3id.org/gffSeq> ;
-          <https://w3id.org/gffstart> @metatype:Integer ;
-          <https://w3id.org/gffend> @metatype:Integer
+<https://w3id.org/biodatamodels/gffSequenceRegionValue> CLOSED {
+    (  $<https://w3id.org/biodatamodels/gffSequenceRegionValue_tes> (  &<https://w3id.org/biodatamodels/gffMetadata_tes> ;
+          rdf:type [ <https://w3id.org/biodatamodels/gffMetadata> ] ? ;
+          <https://w3id.org/biodatamodels/gffseqid> @<https://w3id.org/biodatamodels/gffSeq> ;
+          <https://w3id.org/biodatamodels/gffstart> @linkml:Integer ;
+          <https://w3id.org/biodatamodels/gffend> @linkml:Integer
        ) ;
-       rdf:type [ <https://w3id.org/gffSequenceRegionValue> ] ?
+       rdf:type [ <https://w3id.org/biodatamodels/gffSequenceRegionValue> ] ?
     )
 }
 
-<https://w3id.org/gffTargetLocation> CLOSED {
-    (  $<https://w3id.org/gffTargetLocation_tes> (  <https://w3id.org/gffseqid> @<https://w3id.org/gffSeq> ;
-          <https://w3id.org/gffstart> @metatype:Integer ;
-          <https://w3id.org/gffend> @metatype:Integer
+<https://w3id.org/biodatamodels/gffTargetLocation> CLOSED {
+    (  $<https://w3id.org/biodatamodels/gffTargetLocation_tes> (  <https://w3id.org/biodatamodels/gffseqid>
+          @<https://w3id.org/biodatamodels/gffSeq> ;
+          <https://w3id.org/biodatamodels/gffstart> @linkml:Integer ;
+          <https://w3id.org/biodatamodels/gffend> @linkml:Integer
        ) ;
-       rdf:type [ <https://w3id.org/gffTargetLocation> ] ?
+       rdf:type [ <https://w3id.org/biodatamodels/gffTargetLocation> ] ?
     )
 }
 

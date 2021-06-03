@@ -4,3 +4,5 @@ nav:
   - Home: home.md
   - Index: index.md
   - Credits: credits.md
+repo_url: https://github.com/biodatamodels/gff-schema
+site_url: https://biodatamodels.github.io/gff-schema/
